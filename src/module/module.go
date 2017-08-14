@@ -1,19 +1,18 @@
 package module
 
 import (
-    "github.com/rookie-xy/worker/src/log"
+    "github.com/rookie-xy/hubble/src/log"
     "fmt"
-    "github.com/rookie-xy/worker/src/state"
+    "github.com/rookie-xy/hubble/src/state"
 )
 
 const (
     Flag = "module"
-    Worker = "worker"
+    Worker = "hubble"
     Configure = "configure"
     Plugins = "plugins"
-    Inputs = "inputs"
-    Outputs = "outputs"
-    Channels = "channels"
+    Agents = "agents"
+    Proxy = "proxy"
 )
 
 // composite

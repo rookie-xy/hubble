@@ -1,6 +1,6 @@
 package string
 
-import "github.com/rookie-xy/worker/src/prototype"
+import "github.com/rookie-xy/hubble/src/prototype"
 
 type str struct {
     data []prototype.Objects

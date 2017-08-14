@@ -1,7 +1,7 @@
 package codec
 
 import (
-    "github.com/rookie-xy/worker/src/prototype"
+    "github.com/rookie-xy/hubble/src/prototype"
 )
 
 type Factory func(*Config) (Codec, error)

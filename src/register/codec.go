@@ -2,7 +2,7 @@ package register
 
 import (
     "fmt"
-    "github.com/rookie-xy/worker/src/codec"
+    "github.com/rookie-xy/hubble/src/codec"
     "strings"
 )
 

@@ -1,4 +1,4 @@
-package channel
+package pipeline
 
 //channel可以用中介模式
 

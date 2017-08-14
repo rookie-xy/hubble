@@ -1,6 +1,6 @@
 package log
 
-import "github.com/rookie-xy/worker/src/prototype"
+import "github.com/rookie-xy/hubble/src/prototype"
 
 type Log interface {
     Print(a prototype.Object)

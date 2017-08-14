@@ -3,7 +3,7 @@ package register
 import (
     "strings"
     "fmt"
-    "github.com/rookie-xy/worker/src/client"
+    "github.com/rookie-xy/hubble/src/client"
 )
 
 func Client(name string, f client.Factory) {

@@ -1,6 +1,6 @@
 package client
 
-import "github.com/rookie-xy/worker/src/event"
+import "github.com/rookie-xy/hubble/src/event"
 
 type Factory func(name string) (Client, error)
 

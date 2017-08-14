@@ -1,6 +1,6 @@
 package register
 /*
-import "github.com/rookie-xy/worker/src/output"
+import "github.com/rookie-xy/hubble/src/output"
 
 func Output(name string, f output.Factory) {
     name = name[strings.LastIndex(name, ".") + 1:]

@@ -1,6 +1,6 @@
 package iterator
 
-import "github.com/rookie-xy/worker/src/prototype"
+import "github.com/rookie-xy/hubble/src/prototype"
 
 type Iterator interface {
    	Index() int

@@ -1,6 +1,6 @@
 package observer
 
-import "github.com/rookie-xy/worker/src/prototype"
+import "github.com/rookie-xy/hubble/src/prototype"
 
 type Subject interface {
     Attach(observer Observer)

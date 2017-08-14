@@ -2,10 +2,10 @@ package factory
 
 import (
     "fmt"
-    "github.com/rookie-xy/worker/src/codec"
-    "github.com/rookie-xy/worker/src/observer"
-//    "github.com/rookie-xy/worker/src/channel"
-    "github.com/rookie-xy/worker/src/client"
+    "github.com/rookie-xy/hubble/src/codec"
+    "github.com/rookie-xy/hubble/src/observer"
+//    "github.com/rookie-xy/hubble/src/channel"
+    "github.com/rookie-xy/hubble/src/client"
     "errors"
 )
 

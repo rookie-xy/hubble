@@ -1,8 +1,8 @@
 package input
 
 import (
-    "github.com/rookie-xy/worker/src/prototype"
-    "github.com/rookie-xy/worker/src/observer"
+    "github.com/rookie-xy/hubble/src/prototype"
+    "github.com/rookie-xy/hubble/src/observer"
 )
 
 const Name = "input"

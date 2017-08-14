@@ -1,6 +1,6 @@
 package array
 
-import "github.com/rookie-xy/worker/src/prototype"
+import "github.com/rookie-xy/hubble/src/prototype"
 
 type array struct {
     data []prototype.Objects

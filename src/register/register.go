@@ -2,8 +2,8 @@ package register
 
 import (
     "sync"
-    "github.com/rookie-xy/worker/src/command"
-    "github.com/rookie-xy/worker/src/module"
+    "github.com/rookie-xy/hubble/src/command"
+    "github.com/rookie-xy/hubble/src/module"
 )
 
 // singleton

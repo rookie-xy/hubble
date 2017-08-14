@@ -3,11 +3,11 @@ package main
 import (
     "os"
 
-    "github.com/rookie-xy/worker/src/command"
-    "github.com/rookie-xy/worker/src/module"
-    "github.com/rookie-xy/worker/src/builder"
-    "github.com/rookie-xy/worker/src/log"
-    "github.com/rookie-xy/worker/src/state"
+    "github.com/rookie-xy/hubble/src/command"
+    "github.com/rookie-xy/hubble/src/module"
+    "github.com/rookie-xy/hubble/src/builder"
+    "github.com/rookie-xy/hubble/src/log"
+    "github.com/rookie-xy/hubble/src/state"
 
   _ "github.com/rookie-xy/modules"
 )
@@ -81,9 +81,8 @@ func main() {
     log := log.New()
 
     core := []string{
-        module.Channels,
-        module.Outputs,
-        module.Inputs,
+        module.Proxy,
+        module.Agents,
     }
 
     module := module.New(log)
