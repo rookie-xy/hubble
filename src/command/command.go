@@ -14,10 +14,10 @@ const (
     FILE = 2
 )
 
-type SetFunc func(cmd *Item, meta *command, val prototype.Object) int
+type SetFunc func(cmd *Item, meta *Command, val prototype.Object) int
 
 type Item struct {
-    Command  *command
+    Command  *Command
     Type      int
     Scope     string
     Set       SetFunc
@@ -26,26 +26,26 @@ type Item struct {
     Load      prototype.Object
 }
 
-type command struct {
+type Command struct {
     Flag     string
     Key      string
     Value    prototype.Object
     Details  string
 }
 
-func New(flag string, key string, value prototype.Object, details string) *command {
-    return &command{ flag, key, value, details }
+func New(flag string, key string, value prototype.Object, details string) *Command {
+    return &Command{ flag, key, value, details }
 }
 
-func (r *command) GetFlag() string {
+func (r *Command) GetFlag() string {
     return r.Flag
 }
 
-func (r *command) GetKey() string {
+func (r *Command) GetKey() string {
     return r.Key
 }
 
-func (r *command) GetDetails() string {
+func (r *Command) GetDetails() string {
     key := ""
     if v := r.Details; v != key {
         return v
@@ -53,7 +53,7 @@ func (r *command) GetDetails() string {
     return key
 }
 
-func (r *command) GetString() string {
+func (r *Command) GetString() string {
     if v := r.Value; v != nil {
         return v.(string)
     }
@@ -61,7 +61,7 @@ func (r *command) GetString() string {
     return ""
 }
 
-func (r *command) GetInt() int {
+func (r *Command) GetInt() int {
     if v := r.Value; v != nil {
         return v.(int)
     }
@@ -69,7 +69,7 @@ func (r *command) GetInt() int {
     return state.Error
 }
 /*
-func (r *command) GetObject() prototype.Object {
+func (r *Command) GetObject() prototype.Object {
     if v := r.Value; v != nil {
         switch v {
 
@@ -85,7 +85,7 @@ func (r *command) GetObject() prototype.Object {
 }
 */
 
-func (r *command) GetMap() map[interface{}]interface{} {
+func (r *Command) GetMap() map[interface{}]interface{} {
     if v := r.Value; v != nil {
         return v.(map[interface{}]interface{})
     }
@@ -93,7 +93,7 @@ func (r *command) GetMap() map[interface{}]interface{} {
     return nil
 }
 
-func (r *command) GetArray() []interface{} {
+func (r *Command) GetArray() []interface{} {
     if v := r.Value; v != nil {
         return v.([]interface{})
     }
@@ -147,21 +147,21 @@ func File(nameSpace, key string, value prototype.Object) int {
     return state.Error
 }
 
-func List(_ *Item, _ *command, _ prototype.Object) int {
+func List(_ *Item, _ *Command, _ prototype.Object) int {
     for _, item := range Pool {
         if item.Type != LINE {
             continue
         }
 
-        if command := item.Command; command != nil {
-            fmt.Printf("%s\t%s\t\t%s\n", command.Flag, command.Key, command.Details)
+        if Command := item.Command; Command != nil {
+            fmt.Printf("%s\t%s\t\t%s\n", Command.Flag, Command.Key, Command.Details)
         }
     }
 
     return state.Done
 }
 
-func Display(_ *Item, meta *command, _ prototype.Object) int {
+func Display(_ *Item, meta *Command, _ prototype.Object) int {
     if meta != nil {
         fmt.Println(meta.Details)
     }
@@ -169,7 +169,7 @@ func Display(_ *Item, meta *command, _ prototype.Object) int {
     return state.Done
 }
 
-func SetObject(_ *Item, c *command, value prototype.Object) int {
+func SetObject(_ *Item, c *Command, value prototype.Object) int {
     if c == nil || value == nil {
         return state.Error
     }
@@ -179,7 +179,7 @@ func SetObject(_ *Item, c *command, value prototype.Object) int {
     return state.Ok
 }
 /*
-func SetArray(_ *Item, meta *command, value prototype.Object) int {
+func SetArray(_ *Item, meta *Command, value prototype.Object) int {
     if meta == nil || value == nil {
         return state.Error
     }
@@ -235,23 +235,23 @@ func (self *Receiver) ToggleOff() string {
 }
 
 type Invoker struct {
-	commands []Command
+	Commands []Command
 }
 
-func (self *Invoker) StoreCommand(command Command) {
-	self.commands = append(self.commands, command)
+func (self *Invoker) StoreCommand(Command Command) {
+	self.Commands = append(self.Commands, Command)
 }
 
 func (self *Invoker) UnStoreCommand() {
-	if len(self.commands) != 0 {
-		self.commands = self.commands[:len(self.commands)-1]
+	if len(self.Commands) != 0 {
+		self.Commands = self.Commands[:len(self.Commands)-1]
 	}
 }
 
 func (self *Invoker) Execute() string {
 	var result string
-	for _, command := range self.commands {
-		result += command.Execute() + "\n"
+	for _, Command := range self.Commands {
+		result += Command.Execute() + "\n"
 	}
 	return result
 }

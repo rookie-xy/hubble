@@ -2,26 +2,42 @@ package factory
 
 import (
     "fmt"
+
     "github.com/rookie-xy/hubble/src/codec"
     "github.com/rookie-xy/hubble/src/observer"
-//    "github.com/rookie-xy/hubble/src/channel"
     "github.com/rookie-xy/hubble/src/client"
-    "errors"
+    "github.com/rookie-xy/hubble/src/command"
+    "github.com/rookie-xy/hubble/src/log"
+    "github.com/rookie-xy/hubble/src/pipeline"
 )
 
 // factory method
-func Codec(cfg *codec.Config) (codec.Codec, error) {
+func Codec(name string, l log.Log, c *command.Command) (codec.Codec, error) {
     key := "json"
-    if name := cfg.Name; name != "" {
+    if name != "" {
         key = name
     }
 
-    method := codec.Codecs[key]
-    if method == nil {
-        return nil, fmt.Errorf("'%v' output codec is not available", key)
+    factory := codec.Codecs[key]
+    if factory == nil {
+        return nil, fmt.Errorf("'%v' codec is not available", key)
     }
 
-    return method(cfg)
+    return factory(l, c)
+}
+
+func Pipeline(name string, l log.Log, c *command.Command) (pipeline.Pipeline, error) {
+    key := "slot"
+    if name != "" {
+        key = name
+    }
+
+    factory := pipeline.Pipelines[key]
+    if factory == nil {
+        return nil, fmt.Errorf("'%v' pipeline is not available", key)
+    }
+
+    return factory(l, c)
 }
 
 func Subject(name string) observer.Subject {
@@ -85,7 +101,7 @@ func Pull(name string) channel.Pull {
 }
 */
 
-func Client(name string) (client.Client, error) {
+func Client(name string, l log.Log, c *command.Command) (client.Client, error) {
     key := ""
     if name != key {
         key = name
@@ -93,11 +109,10 @@ func Client(name string) (client.Client, error) {
 
     factory := client.Clients[key]
     if factory == nil {
-        fmt.Errorf("'%v' sender is not available", key)
-        return nil, errors.New("client error")
+        return nil, fmt.Errorf("'%v' client is not available", key)
     }
 
-    return factory(name)
+    return factory(l, c)
 }
 
 

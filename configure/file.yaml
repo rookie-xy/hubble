@@ -1,0 +1,38 @@
+agents:
+    - file:
+        group: "search"
+        type: "redis_log"
+        paths:
+            - "var/logs/search/redis-parse/error.log"
+            - "var/logs/search/redis-parse/access.log"
+        codec.line:
+            match: "\n"
+            max: 16382
+        client.kafka:
+            topic: "abc"
+            broker:
+                - "10.21.21.82:9092"
+                - "10.21.21.83:9092"
+                - "10.21.21.84:9092"
+
+    - file:
+        group: "search"
+        type: "redis_log"
+        paths:
+            - "var/logs/search/redis-parse/error.log"
+            - "var/logs/search/redis-parse/access.log"
+        codec.line:
+            match: "\n"
+            max: 16382
+
+
+proxy:
+    - forward:
+        pipeline.slot:
+            max: 1024
+        client.elasticsearch:
+            # 所有部门redis日志全量数据汇聚, 需要的可接入自行消费
+            cluster:
+                - "10.21.21.82:9092"
+                - "10.21.21.83:9092"
+                - "10.21.21.84:9092"

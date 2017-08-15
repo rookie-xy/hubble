@@ -1,13 +1,13 @@
 package register
 
 import (
-    "strings"
+//    "strings"
     "fmt"
     "github.com/rookie-xy/hubble/src/client"
 )
 
 func Client(name string, f client.Factory) {
-    name = name[strings.LastIndex(name, ".") + 1:]
+//    name = name[strings.LastIndex(name, ".") + 1:]
     if name == "" {
         return
     }

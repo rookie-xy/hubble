@@ -2,9 +2,11 @@ package codec
 
 import (
     "github.com/rookie-xy/hubble/src/prototype"
+    "github.com/rookie-xy/hubble/src/log"
+    "github.com/rookie-xy/hubble/src/command"
 )
 
-type Factory func(*Config) (Codec, error)
+type Factory func(log.Log, *command.Command) (Codec, error)
 
 type Codec interface {
     Encode(in prototype.Object) (prototype.Object, error)
@@ -12,8 +14,3 @@ type Codec interface {
 }
 
 var Codecs = map[string]Factory{}
-
-type Config struct {
-    Name      string
-    configure string
-}

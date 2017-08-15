@@ -3,12 +3,14 @@ package pipeline
 import (
     "github.com/rookie-xy/hubble/src/log"
     "github.com/rookie-xy/hubble/src/event"
+    "github.com/rookie-xy/hubble/src/command"
 )
 
-type Factory func(log.Log, int) (Pipeline, error)
+type Factory func(log.Log, *command.Command) (Pipeline, error)
 
 type Pipeline interface {
     Clone() Pipeline
+    Close() int
     Push
     Pull
 }
@@ -24,8 +26,3 @@ type Pull interface {
 var Pipelines = map[string]Factory{}
 var Publish = map[string]Pipeline{}
 var Subscribe = map[string]Pipeline{}
-
-type Configure struct {
-    Name string
-    Size int
-}
