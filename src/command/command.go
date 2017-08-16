@@ -7,6 +7,8 @@ import (
     "github.com/rookie-xy/hubble/src/plugin"
 //    "github.com/rookie-xy/hubble/src/module"
     "strings"
+    "github.com/rookie-xy/hubble/src/value"
+    "github.com/rookie-xy/hubble/src/types/array"
 )
 
 const (
@@ -68,22 +70,6 @@ func (r *Command) GetInt() int {
 
     return state.Error
 }
-/*
-func (r *Command) GetObject() prototype.Object {
-    if v := r.Value; v != nil {
-        switch v {
-
-        case map[interface{}]interface{}:
-            return r.GetMap()
-
-        case []interface{}:
-            return r.GetArray()
-        }
-    }
-
-    return nil
-}
-*/
 
 func (r *Command) GetMap() map[interface{}]interface{} {
     if v := r.Value; v != nil {
@@ -100,6 +86,41 @@ func (r *Command) GetArray() []interface{} {
 
     return nil
 }
+
+func (r *Command) Get() value.Value {
+
+    if v := r.Value; v != nil {
+        switch v.(type) {
+
+        case []interface{}:
+            return array.New(v)
+
+        case map[interface{}]interface{}:
+            return map.New(v)
+
+        }
+    }
+
+    return nil
+}
+
+func (r *Command) Clear() {
+    r.Value = nil
+}
+
+/*
+func (r *Command) GetArrays() []types.Array {
+    if v := r.Value; v != nil {
+        for k, v := range v {
+
+        }
+
+        return v.([]interface{})
+    }
+
+    return nil
+}
+*/
 
 var Pool []Item
 

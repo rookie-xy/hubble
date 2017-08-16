@@ -17,13 +17,13 @@ agents:
 
     - file:
         group: "search"
-        type: "redis_log"
+        type: "nginx_log"
         paths:
-            - "var/logs/search/redis-parse/error.log"
-            - "var/logs/search/redis-parse/access.log"
+            - "var/logs/search/nginx/error.log"
+            - "var/logs/search/nginx/access.log"
         codec.line:
             match: "\n"
-            max: 16382
+            max: 8192
 
 
 proxy:

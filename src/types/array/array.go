@@ -1,13 +1,16 @@
 package array
 
-import "github.com/rookie-xy/hubble/src/prototype"
+import (
+    "github.com/rookie-xy/hubble/src/prototype"
+    "github.com/rookie-xy/hubble/src/value"
+)
 
 type array struct {
     data []prototype.Objects
     size int
 }
 
-func New() *array {
+func New([]interface{}) value.Value {
     return &array{}
 }
 
