@@ -5,10 +5,10 @@ import (
     "fmt"
     "github.com/rookie-xy/hubble/src/state"
     "github.com/rookie-xy/hubble/src/plugin"
+    "github.com/rookie-xy/hubble/src/types"
 //    "github.com/rookie-xy/hubble/src/module"
     "strings"
     "github.com/rookie-xy/hubble/src/value"
-    "github.com/rookie-xy/hubble/src/types/array"
 )
 
 const (
@@ -55,50 +55,9 @@ func (r *Command) GetDetails() string {
     return key
 }
 
-func (r *Command) GetString() string {
+func (r *Command) GetValue() types.Value {
     if v := r.Value; v != nil {
-        return v.(string)
-    }
-
-    return ""
-}
-
-func (r *Command) GetInt() int {
-    if v := r.Value; v != nil {
-        return v.(int)
-    }
-
-    return state.Error
-}
-
-func (r *Command) GetMap() map[interface{}]interface{} {
-    if v := r.Value; v != nil {
-        return v.(map[interface{}]interface{})
-    }
-
-    return nil
-}
-
-func (r *Command) GetArray() []interface{} {
-    if v := r.Value; v != nil {
-        return v.([]interface{})
-    }
-
-    return nil
-}
-
-func (r *Command) Get() value.Value {
-
-    if v := r.Value; v != nil {
-        switch v.(type) {
-
-        case []interface{}:
-            return array.New(v)
-
-        case map[interface{}]interface{}:
-            return map.New(v)
-
-        }
+        return value.New(v)
     }
 
     return nil
@@ -107,20 +66,6 @@ func (r *Command) Get() value.Value {
 func (r *Command) Clear() {
     r.Value = nil
 }
-
-/*
-func (r *Command) GetArrays() []types.Array {
-    if v := r.Value; v != nil {
-        for k, v := range v {
-
-        }
-
-        return v.([]interface{})
-    }
-
-    return nil
-}
-*/
 
 var Pool []Item
 

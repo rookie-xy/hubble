@@ -13,7 +13,3 @@ type Object interface {
 //    Put(datum Objects) int
     // it's return anything
 }
-
-type Objects interface {
-
-}

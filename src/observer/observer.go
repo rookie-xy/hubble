@@ -1,6 +1,8 @@
 package observer
 
-import "github.com/rookie-xy/hubble/src/prototype"
+import (
+    "github.com/rookie-xy/hubble/src/types"
+)
 
 type Subject interface {
     Attach(observer Observer)
@@ -8,7 +10,7 @@ type Subject interface {
 }
 
 type Observer interface {
-    Update(data prototype.Object) int
+    Update(v types.Value) int
 }
 
 var Observers = map[string]Observer{}

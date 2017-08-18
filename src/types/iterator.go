@@ -1,10 +1,8 @@
-package iterator
-
-import "github.com/rookie-xy/hubble/src/prototype"
+package types
 
 type Iterator interface {
    	Index() int
-   	Value() prototype.Object
+   	Iterm() *Iterm
    	Has() bool
    	Next()
    	Prev()
@@ -14,4 +12,9 @@ type Iterator interface {
 
 type Aggregate interface {
    	Iterator() Iterator
+}
+
+type Iterm struct {
+    Key   Value
+    Value Value
 }
