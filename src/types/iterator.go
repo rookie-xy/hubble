@@ -1,20 +1,20 @@
 package types
 
 type Iterator interface {
-   	Index() int
-   	Iterm() *Iterm
-   	Has() bool
-   	Next()
-   	Prev()
-   	Reset()
-   	End()
+    Index() int
+    Iterm() *Iterm
+    Has() bool
+    Next()
+    Prev()
+    Reset()
+    End()
 }
 
 type Aggregate interface {
-   	Iterator() Iterator
+    Iterator() Iterator
 }
 
 type Iterm struct {
     Key   Value
-    Value Value
+    Value Object
 }

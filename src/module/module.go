@@ -4,6 +4,8 @@ import (
     "github.com/rookie-xy/hubble/src/log"
     "fmt"
     "github.com/rookie-xy/hubble/src/state"
+    "github.com/rookie-xy/hubble/src/factory"
+    "github.com/rookie-xy/hubble/src/memento"
 )
 
 const (
@@ -22,7 +24,8 @@ type Module interface {
 }
 
 // template
-type NewFunc func(log log.Log) Template
+type NewFunc  func(log log.Log) Template
+type Load func(module Template)
 
 type Template interface {
     Init()
@@ -46,7 +49,6 @@ func New(log log.Log) *module {
 }
 
 func (r *module) Init() {
-    fmt.Println("mmmmmmmmmmmmmmm: ", len(r.modules))
     for _, module := range r.modules {
         if module != nil {
             module.Init()
@@ -96,15 +98,24 @@ func (r *module) Load(module Template) {
     }
 }
 
-func (r *module) Configure(configure Template) int {
-    if configure != nil {
-        r.configure = configure
+func (r *module) Configure(cfg Template) int {
+    if cfg != nil {
+        r.configure = cfg
 
     } else {
         return state.Error
     }
 
     r.configure.Init()
+
+    if subject := factory.Subject(memento.Name); subject != nil {
+        fmt.Println("finddddddddddddddddddd")
+	if obs := factory.Observer(Configure); obs != nil {
+            fmt.Println("obs findddddddddddddddddd")
+            subject.Attach(obs)
+        }
+    }
+
     go r.configure.Main()
 
     return state.Ok
@@ -123,7 +134,7 @@ func Setup(key string, log log.Log) Template {
         }
 
     } else {
-        fmt.Println("Not found keyaaaaaaaaaa: ", key)
+        fmt.Println("Not found key: ", key)
     }
 
 J_RET:

@@ -6,13 +6,13 @@ import (
     "github.com/rookie-xy/hubble/src/codec"
     "github.com/rookie-xy/hubble/src/observer"
     "github.com/rookie-xy/hubble/src/client"
-    "github.com/rookie-xy/hubble/src/command"
     "github.com/rookie-xy/hubble/src/log"
     "github.com/rookie-xy/hubble/src/pipeline"
+    "github.com/rookie-xy/hubble/src/types"
 )
 
 // factory method
-func Codec(name string, l log.Log, c *command.Command) (codec.Codec, error) {
+func Codec(name string, l log.Log, v types.Value) (codec.Codec, error) {
     key := "json"
     if name != "" {
         key = name
@@ -23,10 +23,10 @@ func Codec(name string, l log.Log, c *command.Command) (codec.Codec, error) {
         return nil, fmt.Errorf("'%v' codec is not available", key)
     }
 
-    return factory(l, c)
+    return factory(l, v)
 }
 
-func Pipeline(name string, l log.Log, c *command.Command) (pipeline.Pipeline, error) {
+func Pipeline(name string, l log.Log, v types.Value) (pipeline.Pipeline, error) {
     key := "slot"
     if name != "" {
         key = name
@@ -37,7 +37,7 @@ func Pipeline(name string, l log.Log, c *command.Command) (pipeline.Pipeline, er
         return nil, fmt.Errorf("'%v' pipeline is not available", key)
     }
 
-    return factory(l, c)
+    return factory(l, v)
 }
 
 func Subject(name string) observer.Subject {
@@ -101,7 +101,7 @@ func Pull(name string) channel.Pull {
 }
 */
 
-func Client(name string, l log.Log, c *command.Command) (client.Client, error) {
+func Client(name string, l log.Log, v types.Value) (client.Client, error) {
     key := ""
     if name != key {
         key = name
@@ -112,7 +112,7 @@ func Client(name string, l log.Log, c *command.Command) (client.Client, error) {
         return nil, fmt.Errorf("'%v' client is not available", key)
     }
 
-    return factory(l, c)
+    return factory(l, v)
 }
 
 

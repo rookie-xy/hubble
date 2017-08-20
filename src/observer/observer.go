@@ -6,11 +6,11 @@ import (
 
 type Subject interface {
     Attach(observer Observer)
-    Notify()
+    Notify(o types.Object)
 }
 
 type Observer interface {
-    Update(v types.Value) int
+    Update(o types.Object) int
 }
 
 var Observers = map[string]Observer{}

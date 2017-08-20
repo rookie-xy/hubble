@@ -1,0 +1,106 @@
+package value
+
+import (
+    "github.com/rookie-xy/hubble/src/types"
+    "github.com/rookie-xy/hubble/src/configure"
+    "github.com/rookie-xy/hubble/src/state"
+)
+
+type Value struct {
+    types.Object
+}
+
+func New(o types.Object) *Value {
+    return &Value{
+        Object: o,
+    }
+}
+
+func (r *Value) GetString() string {
+    if obj := r.Object; obj != nil {
+        return obj.(string)
+    }
+
+    return ""
+}
+
+func (r *Value) GetInt() int {
+    if obj := r.Object; obj != nil {
+        return obj.(int)
+    }
+
+    return state.Error
+}
+
+func (r *Value) GetArray() []interface{} {
+    if obj := r.Object; obj != nil {
+	return obj.([]interface{})
+    }
+
+    return nil
+}
+
+func (r *Value) GetMap() map[interface{}]interface{} {
+    if obj := r.Object; obj != nil {
+	return obj.(map[interface{}]interface{})
+    }
+
+    return nil
+}
+
+func (r *Value) GetType() int {
+
+    if Value := r.Object; Value != nil {
+
+        switch Value.(type) {
+
+        case []interface{}:
+            return types.Array
+
+        case map[interface{}]interface{}:
+            return types.Map
+
+        case string:
+            return types.String
+
+        case int:
+            return types.Int
+        }
+    }
+
+    return -1
+}
+
+func (r *Value) GetIterator(cfg types.Object) types.Iterator {
+    // TODO add log
+    if cfg == nil {
+        cfg = configure.New(nil)
+    }
+
+    c := cfg.(*configure.Configure)
+
+    switch r.GetType() {
+
+    case types.Array:
+        if iterms := r.GetArray(); iterms != nil {
+            for _, iterm := range iterms {
+                r.Object = iterm
+                r.GetIterator(c)
+            }
+        }
+
+    case types.Map:
+        if iterms := r.GetMap(); iterms != nil {
+            for k, v := range iterms {
+                c.Add(New(k), v)
+            }
+        }
+
+        return c.Iterator()
+
+    default:
+        return nil
+    }
+
+    return c.Iterator()
+}

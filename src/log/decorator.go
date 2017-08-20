@@ -1,9 +1,9 @@
 package log
 
-import "github.com/rookie-xy/hubble/src/prototype"
+import "github.com/rookie-xy/hubble/src/types"
 
 type Log interface {
-    Print(a prototype.Object)
+    Print(a types.Object)
 }
 
 type log struct {
@@ -14,7 +14,7 @@ func New() *log {
     return &log{}
 }
 
-func (r *log) Print(a prototype.Object) {
+func (r *log) Print(a types.Object) {
     return
 }
 /*

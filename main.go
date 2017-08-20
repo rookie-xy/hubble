@@ -54,7 +54,7 @@ func init() {
 
     argc, argv := len(os.Args), os.Args
     if argc <= 1 {
-        command.Setup(help.Flag, "")
+        command.Setup(help.GetFlag(), "")
         exit(state.Done)
     }
 

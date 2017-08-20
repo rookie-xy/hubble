@@ -1,32 +1,64 @@
 package configure
 
 import (
+    "fmt"
+
     "github.com/rookie-xy/hubble/src/types"
+    "github.com/rookie-xy/hubble/src/module"
+    "github.com/rookie-xy/hubble/src/log"
+    "github.com/rookie-xy/hubble/src/observer"
+    "github.com/rookie-xy/hubble/src/state"
 )
 
-const Name = "configure"
-
-var Event chan []byte = make(chan []byte)
+//var Name = "configure"
+//var Event chan []byte = make(chan []byte)
 
 type Configure struct {
-    Iterms  []*types.Iterm
+    log.Log
+    observers  []observer.Observer
+    Iterms     []*types.Iterm
 }
 
 type ConfigureIterator struct {
    *Configure
+
     index    int
     internal int
 }
 
-func New() *Configure {
-    return &Configure{}
+type build func(name string, i types.Iterator, l module.Load) int
+
+var Build build = nil
+
+func New(log log.Log) *Configure {
+    return &Configure{
+        Log:log,
+    }
+}
+
+func (r *Configure) Attach(o observer.Observer) {
+    if o != nil {
+        r.observers = append(r.observers, o)
+        return
+    }
+
+    fmt.Println("attach error")
+    return
+}
+
+func (r *Configure) Notify(o types.Object) {
+    for _, observer := range r.observers {
+        if observer.Update(o) == state.Error {
+            break
+        }
+    }
 }
 
 func (r *Configure) Iterator() *ConfigureIterator {
     return &ConfigureIterator{Configure: r}
 }
 
-func (r *Configure) Add(key, value types.Value) {
+func (r *Configure) Add(key types.Value, value types.Object) {
     iterm := &types.Iterm{key, value}
     r.Iterms = append(r.Iterms, iterm)
 }
@@ -37,8 +69,8 @@ func (r *ConfigureIterator) Index() int {
 
 func (r *ConfigureIterator) Iterm() *types.Iterm {
     if iterm := r.Iterms[r.index]; iterm != nil {
-				    return iterm
-				}
+        return iterm
+    }
 
     return nil
 }

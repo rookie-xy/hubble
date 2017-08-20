@@ -1,5 +1,7 @@
-package types
+package memento
 
+var Name = ""
+/*
 import "testing"
 
 type Originator struct {
@@ -42,3 +44,4 @@ func TestMomento(t *testing.T) {
   		    t.Errorf("Expect State to %s, but %s", originator.State, "On")
 	   }
 }
+*/

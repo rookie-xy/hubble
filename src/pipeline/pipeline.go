@@ -3,12 +3,13 @@ package pipeline
 import (
     "github.com/rookie-xy/hubble/src/log"
     "github.com/rookie-xy/hubble/src/event"
-    "github.com/rookie-xy/hubble/src/command"
+    "github.com/rookie-xy/hubble/src/types"
 )
 
-type Factory func(log.Log, *command.Command) (Pipeline, error)
+type Factory func(log.Log, types.Value) (Pipeline, error)
 
 type Pipeline interface {
+    // prototype pattern
     Clone() Pipeline
     Close() int
     Push

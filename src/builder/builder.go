@@ -41,7 +41,6 @@ func (r *Director) Construct(core []string) {
             }
 
             if f := factory.Observer(name); f != nil {
-                fmt.Println(name)
                 subject.Attach(f)
             }
         }
