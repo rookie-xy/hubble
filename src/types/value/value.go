@@ -4,6 +4,7 @@ import (
     "github.com/rookie-xy/hubble/src/types"
     "github.com/rookie-xy/hubble/src/configure"
     "github.com/rookie-xy/hubble/src/state"
+    "fmt"
 )
 
 type Value struct {
@@ -30,6 +31,16 @@ func (r *Value) GetInt() int {
     }
 
     return state.Error
+}
+
+func (r *Value) GetBool() bool {
+    if obj := r.Object; obj != nil {
+        return obj.(bool)
+    }
+
+    fmt.Println("bool value is not found")
+
+    return false
 }
 
 func (r *Value) GetArray() []interface{} {

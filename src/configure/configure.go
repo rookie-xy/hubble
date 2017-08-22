@@ -10,9 +10,6 @@ import (
     "github.com/rookie-xy/hubble/src/state"
 )
 
-//var Name = "configure"
-//var Event chan []byte = make(chan []byte)
-
 type Configure struct {
     log.Log
     observers  []observer.Observer

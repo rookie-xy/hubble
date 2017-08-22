@@ -6,5 +6,6 @@ type Value interface {
     GetArray() []interface{}
     GetMap() map[interface{}]interface{}
     GetType() int
+    GetBool() bool
     GetIterator(Object) Iterator
 }

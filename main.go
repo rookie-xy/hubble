@@ -8,15 +8,17 @@ import (
     "github.com/rookie-xy/hubble/src/builder"
     "github.com/rookie-xy/hubble/src/log"
     "github.com/rookie-xy/hubble/src/state"
+    "github.com/rookie-xy/hubble/src/paths"
 
   _ "github.com/rookie-xy/modules"
 )
 
 var (
-    version = command.New("-v", "version", "0.0.1", "Display engine version, golang version, " +
-                                                      "system architecture and other information"   )
-    help    = command.New("-h",  "help",    "",     "Assist information on how to use the system" )
-    check   = command.New("-cc", "check",   false,  "Pre check before system startup"             )
+    version = command.New("-v", "version", "0.0.1",    "Display engine version, golang version, " +
+                                                       "system architecture and other information"    )
+    help    = command.New("-?",  "help",    "",        "Assist information on how to use the system"  )
+    check   = command.New("-cc", "check",  false,      "Pre check before system startup"              )
+    home    = command.New("-h",  "home",   paths.Home(), "Program root path"                           )
 )
 
 var commands = []command.Item{
@@ -38,6 +40,14 @@ var commands = []command.Item{
       nil },
 
     { check,
+      command.LINE,
+      module.Worker,
+      command.SetObject,
+      state.Enable,
+      0,
+      nil },
+
+    { home,
       command.LINE,
       module.Worker,
       command.SetObject,
@@ -80,6 +90,10 @@ func init() {
 func main() {
     log := log.New()
 
+    if value := home.GetValue(); value != nil {
+        paths.Init(value)
+    }
+
     core := []string{
         module.Proxy,
         module.Agents,
@@ -95,6 +109,13 @@ func main() {
     director.Construct(core)
 
     module.Init()
+
+    if value := check.GetValue(); value != nil {
+        if value.GetBool() {
+            //TODO if module init exp, then notice
+            return
+        }
+    }
 
     module.Main()
 
