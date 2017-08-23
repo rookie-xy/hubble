@@ -2,6 +2,7 @@ package log
 
 import "github.com/rookie-xy/hubble/src/types"
 
+//Decorator
 type Log interface {
     Print(a types.Object)
 }

@@ -23,10 +23,11 @@ type Module interface {
     Template
 }
 
-// template
+
 type NewFunc  func(log log.Log) Template
 type Load func(module Template)
 
+// template
 type Template interface {
     Init()
     Main()
@@ -109,9 +110,7 @@ func (r *module) Configure(cfg Template) int {
     r.configure.Init()
 
     if subject := factory.Subject(memento.Name); subject != nil {
-        fmt.Println("finddddddddddddddddddd")
-	if obs := factory.Observer(Configure); obs != nil {
-            fmt.Println("obs findddddddddddddddddd")
+	       if obs := factory.Observer(Configure); obs != nil {
             subject.Attach(obs)
         }
     }
