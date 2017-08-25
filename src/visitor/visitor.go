@@ -1,17 +1,66 @@
-package input
+package visitor
 
-
-/*
 type Visitor interface {
-	VisitSushiBar(p *SushiBar) string
-	VisitPizzeria(p *Pizzeria) string
-	VisitBurgerBar(p *BurgerBar) string
+    VisitLog(p *Log) string
 }
 
 type Place interface {
-	Accept(v Visitor) string
+   	Accept(v Visitor) string
 }
 
+type track struct {
+
+}
+
+func (r *track) VisitLog(l *Log) {
+    l.Collect()
+}
+
+type Scanner struct {
+    places []Place
+}
+
+func (r *Scanner) Add(p Place) {
+    r.places = append(r.places, p)
+}
+
+func (r *Scanner) Accept() string {
+    var result string
+
+    for _, p := range r.places {
+        p.Accept(track{})
+    }
+
+    return result
+}
+
+func (r *Scanner) Scan() {
+
+}
+
+type Log struct {
+}
+
+func (r *Log) Accept(v Visitor) string {
+    return v.VisitLog(r)
+}
+
+func (r *Log) Collect() string {
+    return "Collect ..."
+}
+
+func main() {
+    scanner := Scanner{}
+
+    for {
+        select {
+        case:
+            scanner.Scan()
+        }
+    }
+}
+
+/*
 type People struct {
 }
 
