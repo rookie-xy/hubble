@@ -1,5 +1,5 @@
 package visitor
-
+/*
 type Visitor interface {
     VisitLog(p *Log) string
 }
@@ -59,6 +59,7 @@ func main() {
         }
     }
 }
+*/
 
 /*
 type People struct {

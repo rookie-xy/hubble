@@ -37,8 +37,8 @@ proxy:
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"
 
-    - forward:
-        pipeline.slot:
+    - reverse:
+        api.state:
             max: 1024
-        client.sincedb:
+        server.sincedb:
             interval: "5s"
