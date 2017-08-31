@@ -3,6 +3,7 @@ package paths
 import (
     "fmt"
     "os"
+    "sync"
     "path/filepath"
 
     "github.com/rookie-xy/hubble/src/types"
@@ -40,9 +41,16 @@ const (
 // package operate.
 var Paths = New()
 
+
+var instance *Path
+var once sync.Once
 // New creates a new Paths object with all values set to empty values.
 func New() *Path {
-    return &Path{}
+    once.Do(func() {
+        instance = &Path{}
+    })
+
+    return instance
 }
 
 // InitPaths sets the default paths in the configuration based on CLI flags,
