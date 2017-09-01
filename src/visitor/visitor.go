@@ -61,7 +61,6 @@ func main() {
 }
 */
 
-/*
 type People struct {
 }
 
@@ -125,4 +124,3 @@ func (self *BurgerBar) Accept(v Visitor) string {
 func (self *BurgerBar) BuyBurger() string {
 	return "Buy burger..."
 }
-*/

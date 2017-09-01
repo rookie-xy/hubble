@@ -5,7 +5,7 @@ import (
 
     "github.com/rookie-xy/hubble/src/codec"
     "github.com/rookie-xy/hubble/src/observer"
-    "github.com/rookie-xy/hubble/src/client"
+    "github.com/rookie-xy/hubble/src/proxy"
     "github.com/rookie-xy/hubble/src/log"
     "github.com/rookie-xy/hubble/src/pipeline"
     "github.com/rookie-xy/hubble/src/types"
@@ -26,13 +26,13 @@ func Codec(name string, l log.Log, v types.Value) (codec.Codec, error) {
     return factory(l, v)
 }
 
-func Pipeline(name string, l log.Log, v types.Value) (pipeline.Pipeline, error) {
+func Pipeline(name string, l log.Log, v types.Value) (pipeline.Queue, error) {
     key := "slot"
     if name != "" {
         key = name
     }
 
-    factory := pipeline.Pipelines[key]
+    factory := pipeline.Queues[key]
     if factory == nil {
         return nil, fmt.Errorf("'%v' pipeline is not available", key)
     }
@@ -101,15 +101,29 @@ func Pull(name string) channel.Pull {
 }
 */
 
-func Client(name string, l log.Log, v types.Value) (client.Client, error) {
+func Client(name string, l log.Log, v types.Value) (proxy.Forward, error) {
     key := ""
     if name != key {
         key = name
     }
 
-    factory := client.Clients[key]
+    factory := proxy.Forwards[key]
     if factory == nil {
         return nil, fmt.Errorf("'%v' client is not available", key)
+    }
+
+    return factory(l, v)
+}
+
+func Server(name string, l log.Log, v types.Value) (proxy.Reverse, error) {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    factory := proxy.Reverses[key]
+    if factory == nil {
+        return nil, fmt.Errorf("'%v' server is not available", key)
     }
 
     return factory(l, v)

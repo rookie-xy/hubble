@@ -1,4 +1,4 @@
-package client
+package proxy
 
 import (
     "github.com/rookie-xy/hubble/src/event"
@@ -6,11 +6,11 @@ import (
     "github.com/rookie-xy/hubble/src/types"
 )
 
-type Factory func(log.Log, types.Value) (Client, error)
+type Client func(log.Log, types.Value) (Forward, error)
 
-type Client interface {
+type Forward interface {
     Sender(e event.Event) int
     Close() int
 }
 
-var Clients = map[string]Factory{}
+var Forwards = map[string]Client{}

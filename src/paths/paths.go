@@ -39,13 +39,13 @@ const (
 
 // Paths is the Path singleton on which the top level functions from this
 // package operate.
-var Paths = New()
+//var Paths = New()
 
 
 var instance *Path
 var once sync.Once
 // New creates a new Paths object with all values set to empty values.
-func New() *Path {
+func GetInstance() *Path {
     once.Do(func() {
         instance = &Path{}
     })

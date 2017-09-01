@@ -1,20 +1,18 @@
 package register
 
 import (
-//    "strings"
     "fmt"
     "github.com/rookie-xy/hubble/src/proxy"
 )
 
-func Client(name string, f proxy.Client) {
-//    name = name[strings.LastIndex(name, ".") + 1:]
+func Server(name string, f proxy.Server) {
     if name == "" {
         return
     }
 
-    if _, exists := proxy.Forwards[name]; exists {
+    if _, exists := proxy.Reverses[name]; exists {
         panic(fmt.Sprintf("client '%v' already registered ", name))
     }
 
-    proxy.Forwards[name] = f
+    proxy.Reverses[name] = f
 }
