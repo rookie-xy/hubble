@@ -6,6 +6,7 @@ import (
     "github.com/rookie-xy/hubble/src/types"
 )
 
+//mediator
 type Factory func(log.Log, types.Value) (Queue, error)
 
 type Queue interface {

@@ -1,12 +1,11 @@
 package plugin
 
 import (
-    //"errors"
-    //"plugin"
+    "errors"
+    "plugin"
 )
 
 func load(path string) error {
-    /*
     p, err := plugin.Open(path)
     if err != nil {
         return err
@@ -35,7 +34,6 @@ func load(path string) error {
             }
         }
     }
-    */
 
     return nil
 }

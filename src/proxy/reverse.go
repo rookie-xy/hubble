@@ -9,10 +9,10 @@ import (
 type Server func(log.Log, types.Value) (Reverse, error)
 
 type Reverse interface {
-    Insert(e event.Event) int
-    Update(e event.Event) int
-    Delete(e event.Event) int
-    Select(e event.Event) int
+    Insert(e adapter.Event) int
+    Update(e adapter.Event) int
+    Delete(e adapter.Event) int
+    Select(e adapter.Event) int
     Close() int
 }
 

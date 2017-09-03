@@ -10,6 +10,7 @@ import (
     "github.com/rookie-xy/hubble/src/state"
 )
 
+// Iterator
 type Configure struct {
     log.Log
     observers  []observer.Observer

@@ -22,6 +22,10 @@ const (
     EXIT = 3
 )
 
+type State interface {
+    Update()
+}
+
 /*
 type ModileAlertStater interface {
 	Alert() string

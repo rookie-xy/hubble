@@ -1,38 +1,52 @@
 package types
 
-type Carer interface {
-	Rase() string
+import (
+	"fmt"
+	"net/http"
+)
+
+//
+// 桥接模式
+//    是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，
+//    它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。
+//
+
+//请求接口
+type Request interface {
+	HttpRequest() (*http.Request, error)
 }
 
-type Enginer interface {
-	GetSound() string
+//客户端
+type Client struct {
+	Client *http.Client
 }
 
-type Car struct {
-	engine Enginer
+func (c *Client) Query(req Request) (resp *http.Response, err error) {
+	httpreq,_:=req.HttpRequest()
+	resp, err = c.Client.Do(httpreq)
+	return
 }
 
-func (self *Car) Rase() string {
-	return self.engine.GetSound()
+type CdnRequest struct {
 }
 
-type EngineSuzuki struct {
+func (cdn *CdnRequest) HttpRequest() (*http.Request,  error) {
+	return http.NewRequest("GET", "/cdn", nil)
 }
 
-func (self *EngineSuzuki) GetSound() string {
-	return "SssuuuuZzzuuuuKkiiiii"
+type LiveRequest struct {
 }
 
-type EngineHonda struct {
+func (cdn *LiveRequest) HttpRequest() (*http.Request, error) {
+	return http.NewRequest("GET", "/live", nil)
 }
 
-func (self *EngineHonda) GetSound() string {
-	return "HhoooNnnnnnnnnDddaaaaaaa"
-}
+func TestBridge() {
+	client := &Client{http.DefaultClient}
 
-type EngineLada struct {
-}
+	cdnReq := &CdnRequest{}
+	fmt.Println(client.Query(cdnReq))
 
-func (self *EngineLada) GetSound() string {
-	return "PhhhhPhhhhPhPhPhPhPh"
+	liveReq := &LiveRequest{}
+	fmt.Println(client.Query(liveReq))
 }

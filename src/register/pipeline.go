@@ -10,9 +10,9 @@ func Pipeline(name string, f pipeline.Factory) {
         return
     }
 
-    if _, exists := pipeline.Pipelines[name]; exists {
-        panic(fmt.Sprintf("this channel '%v' already registered ", name))
+    if _, exists := pipeline.Queues[name]; exists {
+        panic(fmt.Sprintf("this pipeline '%v' already registered ", name))
     }
 
-    pipeline.Pipelines[name] = f
+    pipeline.Queues[name] = f
 }

@@ -1,5 +1,6 @@
 package types
 
+// Iterator
 type Iterator interface {
     Index() int
     Iterm() *Iterm

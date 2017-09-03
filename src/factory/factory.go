@@ -69,6 +69,36 @@ func Observer(name string) observer.Observer {
 
     return observer
 }
+
+
+func Client(name string, l log.Log, v types.Value) (proxy.Forward, error) {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    factory := proxy.Forwards[key]
+    if factory == nil {
+        return nil, fmt.Errorf("'%v' client is not available", key)
+    }
+
+    return factory(l, v)
+}
+
+func Server(name string, l log.Log, v types.Value) (proxy.Reverse, error) {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    factory := proxy.Reverses[key]
+    if factory == nil {
+        return nil, fmt.Errorf("'%v' server is not available", key)
+    }
+
+    return factory(l, v)
+}
+
 /*
 func Push(name string) channel.Push {
     key := ""
@@ -100,34 +130,6 @@ func Pull(name string) channel.Pull {
     return pull
 }
 */
-
-func Client(name string, l log.Log, v types.Value) (proxy.Forward, error) {
-    key := ""
-    if name != key {
-        key = name
-    }
-
-    factory := proxy.Forwards[key]
-    if factory == nil {
-        return nil, fmt.Errorf("'%v' client is not available", key)
-    }
-
-    return factory(l, v)
-}
-
-func Server(name string, l log.Log, v types.Value) (proxy.Reverse, error) {
-    key := ""
-    if name != key {
-        key = name
-    }
-
-    factory := proxy.Reverses[key]
-    if factory == nil {
-        return nil, fmt.Errorf("'%v' server is not available", key)
-    }
-
-    return factory(l, v)
-}
 
 
 /*
