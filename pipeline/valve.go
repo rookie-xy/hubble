@@ -1,6 +1,6 @@
 package pipeline
 
-import "github.com/rookie-xy/hubble/src/event"
+import "github.com/rookie-xy/hubble/event"
 
 // chain_of_responsibility
 type Valve interface {

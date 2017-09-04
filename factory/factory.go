@@ -3,12 +3,12 @@ package factory
 import (
     "fmt"
 
-    "github.com/rookie-xy/hubble/src/codec"
-    "github.com/rookie-xy/hubble/src/observer"
-    "github.com/rookie-xy/hubble/src/proxy"
-    "github.com/rookie-xy/hubble/src/log"
-    "github.com/rookie-xy/hubble/src/pipeline"
-    "github.com/rookie-xy/hubble/src/types"
+    "github.com/rookie-xy/hubble/codec"
+    "github.com/rookie-xy/hubble/observer"
+    "github.com/rookie-xy/hubble/proxy"
+    "github.com/rookie-xy/hubble/log"
+    "github.com/rookie-xy/hubble/pipeline"
+    "github.com/rookie-xy/hubble/types"
 )
 
 // factory method

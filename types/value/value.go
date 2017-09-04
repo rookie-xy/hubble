@@ -1,9 +1,9 @@
 package value
 
 import (
-    "github.com/rookie-xy/hubble/src/types"
-    "github.com/rookie-xy/hubble/src/configure"
-    "github.com/rookie-xy/hubble/src/state"
+    "github.com/rookie-xy/hubble/types"
+    "github.com/rookie-xy/hubble/configure"
+    "github.com/rookie-xy/hubble/state"
     "fmt"
 )
 

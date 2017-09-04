@@ -3,9 +3,9 @@ package builder
 import (
     "fmt"
 
-    "github.com/rookie-xy/hubble/src/module"
-    "github.com/rookie-xy/hubble/src/log"
-    "github.com/rookie-xy/hubble/src/factory"
+    "github.com/rookie-xy/hubble/module"
+    "github.com/rookie-xy/hubble/log"
+    "github.com/rookie-xy/hubble/factory"
 )
 
 type Builder interface {

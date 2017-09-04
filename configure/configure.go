@@ -3,11 +3,11 @@ package configure
 import (
     "fmt"
 
-    "github.com/rookie-xy/hubble/src/types"
-    "github.com/rookie-xy/hubble/src/module"
-    "github.com/rookie-xy/hubble/src/log"
-    "github.com/rookie-xy/hubble/src/observer"
-    "github.com/rookie-xy/hubble/src/state"
+    "github.com/rookie-xy/hubble/types"
+    "github.com/rookie-xy/hubble/module"
+    "github.com/rookie-xy/hubble/log"
+    "github.com/rookie-xy/hubble/observer"
+    "github.com/rookie-xy/hubble/state"
 )
 
 // Iterator

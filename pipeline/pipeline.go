@@ -1,9 +1,9 @@
 package pipeline
 
 import (
-    "github.com/rookie-xy/hubble/src/log"
-    "github.com/rookie-xy/hubble/src/event"
-    "github.com/rookie-xy/hubble/src/types"
+    "github.com/rookie-xy/hubble/log"
+    "github.com/rookie-xy/hubble/event"
+    "github.com/rookie-xy/hubble/types"
 )
 
 //mediator

@@ -1,8 +1,8 @@
 package codec
 
 import (
-    "github.com/rookie-xy/hubble/src/types"
-    "github.com/rookie-xy/hubble/src/log"
+    "github.com/rookie-xy/hubble/types"
+    "github.com/rookie-xy/hubble/log"
 )
 
 type Factory func(log.Log, types.Value) (Codec, error)

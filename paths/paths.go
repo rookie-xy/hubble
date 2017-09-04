@@ -6,7 +6,7 @@ import (
     "sync"
     "path/filepath"
 
-    "github.com/rookie-xy/hubble/src/types"
+    "github.com/rookie-xy/hubble/types"
 )
 
 type Path struct {

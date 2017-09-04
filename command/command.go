@@ -3,10 +3,10 @@ package command
 import (
     "fmt"
     "strings"
-    "github.com/rookie-xy/hubble/src/state"
-    "github.com/rookie-xy/hubble/src/plugin"
-    "github.com/rookie-xy/hubble/src/types"
-    "github.com/rookie-xy/hubble/src/types/value"
+    "github.com/rookie-xy/hubble/state"
+    "github.com/rookie-xy/hubble/plugin"
+    "github.com/rookie-xy/hubble/types"
+    "github.com/rookie-xy/hubble/types/value"
 )
 
 const (
