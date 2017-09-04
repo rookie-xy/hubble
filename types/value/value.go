@@ -45,7 +45,7 @@ func (r *Value) GetBool() bool {
 
 func (r *Value) GetArray() []interface{} {
     if obj := r.Object; obj != nil {
-	return obj.([]interface{})
+        return obj.([]interface{})
     }
 
     return nil
@@ -53,7 +53,7 @@ func (r *Value) GetArray() []interface{} {
 
 func (r *Value) GetMap() map[interface{}]interface{} {
     if obj := r.Object; obj != nil {
-	return obj.(map[interface{}]interface{})
+        return obj.(map[interface{}]interface{})
     }
 
     return nil

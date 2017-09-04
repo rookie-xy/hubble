@@ -3,12 +3,12 @@ package main
 import (
     "os"
 
-    "github.com/rookie-xy/hubble/src/command"
-    "github.com/rookie-xy/hubble/src/module"
-    "github.com/rookie-xy/hubble/src/builder"
-    "github.com/rookie-xy/hubble/src/log"
-    "github.com/rookie-xy/hubble/src/state"
-    "github.com/rookie-xy/hubble/src/paths"
+    "github.com/rookie-xy/hubble/command"
+    "github.com/rookie-xy/hubble/module"
+    "github.com/rookie-xy/hubble/builder"
+    "github.com/rookie-xy/hubble/log"
+    "github.com/rookie-xy/hubble/state"
+    "github.com/rookie-xy/hubble/paths"
 
   _ "github.com/rookie-xy/modules"
 )
