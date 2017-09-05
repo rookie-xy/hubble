@@ -26,7 +26,7 @@ func Make(key string, ifc interface{}) map[string][]interface{} {
     }
 }
 
-func MustRegisterLoader(name string, loader Loader) {
+func Register(name string, loader Loader) {
     err := RegisterLoader(name, loader)
     if err != nil {
         panic(err)
