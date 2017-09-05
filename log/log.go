@@ -1,6 +1,6 @@
 package log
 
-import "github.com/rookie-xy/hubble/src/types"
+import "github.com/rookie-xy/hubble/types"
 
 //Decorator
 type Log interface {
