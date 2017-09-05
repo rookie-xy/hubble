@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af94c93d-bc83-4f67-a0fb-17682d92d410" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/job/job.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/job/jobs.go" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bridge.go" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/strategy.go" afterPath="$PROJECT_DIR$/strategy/strategy.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/log.go" afterPath="$PROJECT_DIR$/log/log.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/job/jobs.go" afterPath="$PROJECT_DIR$/job/jobs.go" />
     </list>
     <ignored path="hubble.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,14 +57,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jobs.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="jobs.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/job/jobs.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-              <folding>
-                <element signature="e#13#119#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -96,7 +89,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -174,9 +167,9 @@
         <option value="$PROJECT_DIR$/factory/factory.go" />
         <option value="$PROJECT_DIR$/job/bridge.go" />
         <option value="$PROJECT_DIR$/log/log.go" />
-        <option value="$PROJECT_DIR$/job/jobs.go" />
         <option value="$PROJECT_DIR$/strategy.go" />
         <option value="$PROJECT_DIR$/strategy/strategy.go" />
+        <option value="$PROJECT_DIR$/job/jobs.go" />
       </list>
     </option>
   </component>
@@ -244,6 +237,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="hubble" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hubble" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hubble" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="job" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -749,7 +756,7 @@
       <workItem from="1504526922712" duration="1064000" />
       <workItem from="1504580073554" duration="148000" />
       <workItem from="1504581043271" duration="216000" />
-      <workItem from="1504581667254" duration="1426000" />
+      <workItem from="1504581667254" duration="1630000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1498648610794</created>
@@ -783,14 +790,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="451261000" />
+    <option name="totallyTimeSpent" value="451465000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3800797" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3800797" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32766616" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
@@ -1166,16 +1173,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/job/jobs.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding>
-            <element signature="e#13#119#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module/module.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1348">
@@ -1196,6 +1193,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/job/jobs.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>

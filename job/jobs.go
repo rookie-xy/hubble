@@ -3,14 +3,16 @@ package job
 import (
     "fmt"
     "sync"
-    uuid "github.com/satori/go.uuid"
+
     "github.com/rookie-xy/hubble/log"
+
+    uuid "github.com/satori/go.uuid"
 )
 
 type Jobs struct {
     sync.RWMutex
 
- 			jobs  map[uuid.UUID]Job
+    jobs  map[uuid.UUID]Job
     wg    sync.WaitGroup
     done  chan struct{}
     log   log.Log
@@ -82,7 +84,8 @@ func (r *Jobs) Start(j Job) {
 
         r.add(j)
 
-				    // Starts harvester and picks the right type. In case type is not set, set it to default (log)
+        // Starts harvester and picks the right type. In case
+        // type is not set, set it to default (log)
         err := j.Run()
         if err != nil {
             //r.log.Print("Error running prospector: %v", err)
