@@ -1,17 +1,11 @@
 package observer
 
 import (
-    "github.com/rookie-xy/hubble/src/types"
+    "github.com/rookie-xy/hubble/types"
 )
-
-type Subject interface {
-    Attach(observer Observer)
-    Notify(o types.Object)
-}
 
 type Observer interface {
     Update(o types.Object) int
 }
 
 var Observers = map[string]Observer{}
-var Subjects = map[string]Subject{}

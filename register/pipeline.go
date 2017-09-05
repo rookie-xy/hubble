@@ -2,7 +2,7 @@ package register
 
 import (
     "fmt"
-    "github.com/rookie-xy/hubble/src/pipeline"
+    "github.com/rookie-xy/hubble/pipeline"
 )
 
 func Pipeline(name string, f pipeline.Factory) {

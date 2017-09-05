@@ -3,7 +3,7 @@ package register
 import (
 //    "strings"
     "fmt"
-    "github.com/rookie-xy/hubble/src/proxy"
+    "github.com/rookie-xy/hubble/proxy"
 )
 
 func Client(name string, f proxy.Client) {

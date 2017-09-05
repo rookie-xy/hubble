@@ -5,8 +5,7 @@ import (
     "sync"
 
     "github.com/rookie-xy/hubble/log"
-
-    uuid "github.com/satori/go.uuid"
+    "github.com/satori/go.uuid"
 )
 
 type Jobs struct {

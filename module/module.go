@@ -1,40 +1,11 @@
 package module
 
 import (
-    "github.com/rookie-xy/hubble/src/log"
-    "fmt"
-    "github.com/rookie-xy/hubble/src/state"
-    "github.com/rookie-xy/hubble/src/factory"
-    "github.com/rookie-xy/hubble/src/memento"
+    "github.com/rookie-xy/hubble/log"
+    "github.com/rookie-xy/hubble/state"
+    "github.com/rookie-xy/hubble/factory"
+    "github.com/rookie-xy/hubble/memento"
 )
-
-const (
-    Flag = "module"
-    Worker = "hubble"
-    Configure = "configure"
-    Plugins = "plugins"
-    Agents = "agents"
-    Proxy = "proxy"
-)
-
-// composite
-type Module interface {
-    Load(module Template)
-    Template
-}
-
-
-type NewFunc  func(log log.Log) Template
-type Load func(module Template)
-
-// template
-type Template interface {
-    Init()
-    Main()
-    Exit(code int)
-}
-
-var Pool = map[string]*NewFunc{}
 
 // facade
 type module struct {
@@ -118,24 +89,4 @@ func (r *module) Configure(cfg Template) int {
     go r.configure.Main()
 
     return state.Ok
-}
-
-func Setup(key string, log log.Log) Template {
-    if key == "" {
-        goto J_RET
-    }
-
-    if this, exist := Pool[key]; exist {
-        if new := *this; new != nil {
-            return new(log)
-        } else {
-            fmt.Println("New func is nil")
-        }
-
-    } else {
-        fmt.Println("Not found key: ", key)
-    }
-
-J_RET:
-    return nil
 }

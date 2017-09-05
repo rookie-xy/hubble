@@ -2,7 +2,7 @@ package register
 
 import (
     "fmt"
-    "github.com/rookie-xy/hubble/src/observer"
+    "github.com/rookie-xy/hubble/observer"
 )
 
 func Observer(name string, o observer.Observer) {

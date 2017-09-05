@@ -61,8 +61,6 @@ func main() {
 }
 */
 
-package pattern
-
 import (
 "fmt"
 "math"
