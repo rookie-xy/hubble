@@ -33,6 +33,14 @@ func (r *Value) GetInt() int {
     return state.Error
 }
 
+func (r *Value) GetUint64() int {
+    if obj := r.Object; obj != nil {
+        return obj.(uint64)
+    }
+
+    return state.Error
+}
+
 func (r *Value) GetBool() bool {
     if obj := r.Object; obj != nil {
         return obj.(bool)

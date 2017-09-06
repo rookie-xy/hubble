@@ -1,49 +1,16 @@
-package strategy
+package scanner
+
+//strategy
+type Scanner interface {
+    Scan() bool
+}
+
+func New() {
+
+}
 
 
 /*
-import (
-    "context"
-)
-
-const (
-      =
-)
-
-type Context struct {
-    context.Context
-    Kill context.CancelFunc
-}
-
-func NewContext() *Context {
-    return &Context{}
-}
-
-func CreateContext(action string) context.Context {
-    switch action {
-    case "backgr"
-
-    }
-    return context.Background()
-}
-
-func CreateTodoContext() context.Context {
-    return context.TODO()
-}
-
-func (r *Context) WithCancel(c context.Context) int {
-    if this, kill := context.WithCancel(c); this != nil {
-        r.Context = this
-        r.Kill = kill
-
-    } else {
-        return Error
-    }
-
-    return Ok
-}
-*/
-
 type StrategySort interface {
 	Sort([]int)
 }
@@ -97,3 +64,4 @@ func (self *Context) Algorithm(a StrategySort) {
 func (self *Context) Sort(s []int) {
 	self.strategy.Sort(s)
 }
+*/
