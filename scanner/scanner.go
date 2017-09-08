@@ -79,7 +79,7 @@ func (s *Scanner) Scan() bool {
     // Loop until we have a token.
     for {
         if s.end > s.start || s.err != nil {
-								    advance, token, err := s.split(s.buf[s.start:s.end], s.err != nil)
+            advance, token, err := s.split(s.buf[s.start:s.end], s.err != nil)
             if err != nil {
                 if err == ErrFinalToken {
                     s.token = token
