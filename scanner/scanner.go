@@ -102,11 +102,11 @@ func (s *Scanner) Scan() bool {
                     s.empties++
                     if s.empties > 100 {
                         panic("bufio.Scan: 100 empty tokens without progressing")
-																				}
-																}
+                    }
+                }
                 return true
             }
-		      }
+        }
 
         if s.err != nil {
             s.start = 0
@@ -124,7 +124,7 @@ func (s *Scanner) Scan() bool {
             const maxInt = int(^uint(0) >> 1)
             if len(s.buf) >= s.maxTokenSize || len(s.buf) > maxInt/2 {
                 s.setErr(ErrTooLong)
-												    return false
+                return false
             }
 
             newSize := len(s.buf) * 2
@@ -132,7 +132,7 @@ func (s *Scanner) Scan() bool {
                 newSize = startBufSize
             }
 
-								    if newSize > s.maxTokenSize {
+            if newSize > s.maxTokenSize {
                 newSize = s.maxTokenSize
             }
 
@@ -141,7 +141,7 @@ func (s *Scanner) Scan() bool {
             s.buf = newBuf
             s.end -= s.start
             s.start = 0
-								}
+        }
 
         for loop := 0; ; {
             n, err := s.r.Read(s.buf[s.end:len(s.buf)])
@@ -152,7 +152,7 @@ func (s *Scanner) Scan() bool {
                 break
             }
 
-								    if n > 0 {
+            if n > 0 {
                 s.empties = 0
                 break
             }
@@ -176,7 +176,7 @@ func (s *Scanner) advance(n int) bool {
 
     if n > s.end-s.start {
         s.setErr(ErrAdvanceTooFar)
-				    return false
+        return false
     }
 
     s.start += n
