@@ -42,7 +42,7 @@ const (
 func New(r io.Reader) *Scanner {
     return &Scanner{
         r:            r,
-        split:        ScanLines,
+        split:        nil,
         maxTokenSize: MaxScanTokenSize,
     }
 }
@@ -145,7 +145,7 @@ func (s *Scanner) Scan() bool {
 
         for loop := 0; ; {
             n, err := s.r.Read(s.buf[s.end:len(s.buf)])
-								    s.end += n
+            s.end += n
 
             if err != nil {
                 s.setErr(err)

@@ -27,7 +27,7 @@ func Codec(name string, l log.Log, v types.Value) (codec.Codec, error) {
 }
 
 func Pipeline(name string, l log.Log, v types.Value) (pipeline.Queue, error) {
-    key := "slot"
+    key := "channel"
     if name != "" {
         key = name
     }
@@ -70,6 +70,20 @@ func Observer(name string) observer.Observer {
     return observer
 }
 
+func Clone(name string) pipeline.Queue {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    clone := pipeline.Clones[key]
+    if clone == nil {
+        fmt.Errorf("'%v' clone is not available", key)
+        return nil
+    }
+
+    return clone
+}
 
 func Client(name string, l log.Log, v types.Value) (proxy.Forward, error) {
     key := ""

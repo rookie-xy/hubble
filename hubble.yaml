@@ -21,14 +21,15 @@ agents:
         paths:
             - "var/logs/search/nginx/error.log"
             - "var/logs/search/nginx/access.log"
-        codec.line:
-            match: "\n"
-            max: 8192
+        codec.multiline:
+            match: "^{ISO_9002_TIMESTAMP}"
+            previous: ""
+            next: ""
 
 
 proxy:
     - forward:
-        pipeline.slot:
+        pipeline.channel:
             max: 1024
         client.elasticsearch:
             # 所有部门redis日志全量数据汇聚, 需要的可接入自行消费

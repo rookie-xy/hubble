@@ -16,3 +16,15 @@ func Pipeline(name string, f pipeline.Factory) {
 
     pipeline.Queues[name] = f
 }
+
+func Clones(name string, q pipeline.Queue) {
+    if name == "" {
+        return
+    }
+
+    if _, exists := pipeline.Clones[name]; exists {
+        panic(fmt.Sprintf("this pipeline name '%v' already registered ", name))
+    }
+
+    pipeline.Clones[name] = q
+}
