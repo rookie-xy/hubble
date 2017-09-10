@@ -3,8 +3,8 @@ package scanner
 import (
     "errors"
     "io"
+    "github.com/rookie-xy/hubble/types"
 )
-
 
 type Scanner struct {
     r            io.Reader // The reader provided by the client.
@@ -21,7 +21,7 @@ type Scanner struct {
 }
 
 // strategy pattern, split strategy
-type SplitFunc func(data []byte, atEOF bool) (advance int, token []byte, err error)
+type SplitFunc func(data []byte, atEOF bool) (advance int, token types.Object, err error)
 
 // Errors returned by Scanner.
 var (
