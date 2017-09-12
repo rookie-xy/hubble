@@ -82,7 +82,7 @@ func Clone(name string) pipeline.Queue {
         return nil
     }
 
-    return clone
+    return clone.Clone()
 }
 
 func Client(name string, l log.Log, v types.Value) (proxy.Forward, error) {
