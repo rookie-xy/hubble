@@ -25,6 +25,14 @@ func (r *Value) GetString() string {
     return ""
 }
 
+func (r *Value) GetBytes() []byte {
+    if obj := r.Object; obj != nil {
+        return obj.([]byte)
+    }
+
+    return nil
+}
+
 func (r *Value) GetInt() int {
     if obj := r.Object; obj != nil {
         return obj.(int)
