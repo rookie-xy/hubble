@@ -13,4 +13,5 @@ type Forward interface {
     Close() int
 }
 
-var Forwards = map[string]Client{}
+var Clients = map[string]Client{}
+var Forwards = map[string]Forward{}

@@ -5,6 +5,7 @@ import (
 
     "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/state"
+    "github.com/rookie-xy/hubble/plugin"
 )
 
 func Setup(flag, value string) int {

@@ -41,12 +41,13 @@ func (r *Value) GetInt() int {
     return state.Error
 }
 
-func (r *Value) GetUint64() int {
+func (r *Value) GetUint64() uint64 {
     if obj := r.Object; obj != nil {
         return obj.(uint64)
     }
 
-    return state.Error
+    // TODO 修改错误信息
+    return state.Ok
 }
 
 func (r *Value) GetBool() bool {

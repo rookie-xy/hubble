@@ -4,7 +4,7 @@ import (
     "fmt"
 
     "github.com/rookie-xy/hubble/types"
-    "github.com/rookie-xy/hubble/module"
+//    "github.com/rookie-xy/hubble/module"
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/observer"
     "github.com/rookie-xy/hubble/state"

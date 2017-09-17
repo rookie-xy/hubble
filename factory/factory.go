@@ -32,7 +32,7 @@ func Pipeline(name string, l log.Log, v types.Value) (pipeline.Queue, error) {
         key = name
     }
 
-    factory := pipeline.Queues[key]
+    factory := pipeline.Factories[key]
     if factory == nil {
         return nil, fmt.Errorf("'%v' pipeline is not available", key)
     }
@@ -70,13 +70,13 @@ func Observer(name string) observer.Observer {
     return observer
 }
 
-func Clone(name string) pipeline.Queue {
+func Queue(name string) pipeline.Queue {
     key := ""
     if name != key {
         key = name
     }
 
-    clone := pipeline.Clones[key]
+    clone := pipeline.Queues[key]
     if clone == nil {
         fmt.Errorf("'%v' clone is not available", key)
         return nil
@@ -85,13 +85,27 @@ func Clone(name string) pipeline.Queue {
     return clone.Clone()
 }
 
+func Forward(name string) proxy.Forward {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    if forward, ok := proxy.Forwards[key]; ok {
+        return forward
+    }
+
+    fmt.Errorf("'%v' forward is not available", key)
+    return nil
+}
+
 func Client(name string, l log.Log, v types.Value) (proxy.Forward, error) {
     key := ""
     if name != key {
         key = name
     }
 
-    factory := proxy.Forwards[key]
+    factory := proxy.Clients[key]
     if factory == nil {
         return nil, fmt.Errorf("'%v' client is not available", key)
     }

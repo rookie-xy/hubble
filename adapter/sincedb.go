@@ -1,17 +1,16 @@
 package adapter
 
 import (
-    "github.com/rookie-xy/hubble/event"
-    "github.com/rookie-xy/hubble/log"
-    "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/proxy"
+    "github.com/rookie-xy/hubble/types"
 )
 
-type Sincedb interface {
+type SinceDB interface {
     proxy.Forward
-    Search()
+    Add()  int
+    Find() types.Object
 }
 
-func AdapteeSincedb(fw proxy.Forward) Sincedb {
-    return fw
+func AdapterSinceDB(client proxy.Forward) SinceDB {
+    return client.(SinceDB)
 }

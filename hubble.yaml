@@ -32,14 +32,13 @@ proxy:
         pipeline.channel:
             max: 1024
         client.elasticsearch:
-            # 所有部门redis日志全量数据汇聚, 需要的可接入自行消费
             cluster:
                 - "10.21.21.82:9092"
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"
 
-    - reverse:
-        api.state:
+    - forward:
+        pipeline.channel:
             max: 1024
-        server.sincedb:
-            interval: "5s"
+        client.sincedb:
+            dir: "/data/logs/sincedb"

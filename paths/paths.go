@@ -62,20 +62,20 @@ func (paths *Path) Init(v types.Value) error {
         return err
     }
 
-	  // make sure the data path exists
+    // make sure the data path exists
     err = os.MkdirAll(paths.Data, 0750)
     if err != nil {
         return fmt.Errorf("Failed to create data path %s: %v", paths.Data, err)
-	   }
+    }
 
-   	return nil
+    return nil
 }
 
 // InitPaths sets the default paths in the configuration based on CLI flags,
 // configuration file and default values. It also tries to create the data
 // path with mode 0750 and returns an error on failure.
 func Init(v types.Value) error {
-    return Paths.Init(v)
+    return GetInstance().Init(v)
 }
 
 // initPaths sets the default paths in the configuration based on CLI flags,
@@ -134,7 +134,7 @@ func (paths *Path) Resolve(fileType FileType, path string) string {
 // path for "test" in the home path.
 // In case path is already an absolute path, the path itself is returned.
 func Resolve(fileType FileType, path string) string {
-    return Paths.Resolve(fileType, path)
+    return GetInstance().Resolve(fileType, path)
 }
 
 // String returns a textual representation

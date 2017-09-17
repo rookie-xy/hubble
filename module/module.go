@@ -7,6 +7,8 @@ import (
     "github.com/rookie-xy/hubble/memento"
 )
 
+//type NewFunc func(log log.Log) Template
+
 // facade
 type module struct {
     log.Log

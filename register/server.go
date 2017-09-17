@@ -5,7 +5,7 @@ import (
     "github.com/rookie-xy/hubble/proxy"
 )
 
-func Server(name string, f proxy.Server) {
+func Server(name string, s proxy.Server) {
     if name == "" {
         return
     }
@@ -14,5 +14,5 @@ func Server(name string, f proxy.Server) {
         panic(fmt.Sprintf("client '%v' already registered ", name))
     }
 
-    proxy.Reverses[name] = f
+    proxy.Reverses[name] = s
 }

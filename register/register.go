@@ -22,7 +22,7 @@ func getInstance() *singleton {
 }
 
 // flyweight
-func Module(scope, name string, items []command.Item, new module.NewFunc) {
+func Module(scope, name string, items []command.Item, f module.Factory) {
     merge := getInstance()
 
     key := ""
@@ -39,8 +39,8 @@ func Module(scope, name string, items []command.Item, new module.NewFunc) {
         merge.Command(key, items)
     }
 
-    if new != nil {
-        merge.Module(key, new)
+    if f != nil {
+        merge.Module(key, f)
     }
 }
 
@@ -50,10 +50,10 @@ func (r *singleton) Command(key string, value []command.Item) {
     }
 }
 
-func (r *singleton) Module(key string, value module.NewFunc) {
+func (r *singleton) Module(key string, f module.Factory) {
 
     if _, exist := module.Pool[key]; !exist {
         //fmt.Println("register: ", key)
-        module.Pool[key] = &value
+        module.Pool[key] = &f
     }
 }

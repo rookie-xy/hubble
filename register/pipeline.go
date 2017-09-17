@@ -10,21 +10,21 @@ func Pipeline(name string, f pipeline.Factory) {
         return
     }
 
-    if _, exists := pipeline.Queues[name]; exists {
+    if _, exists := pipeline.Factories[name]; exists {
         panic(fmt.Sprintf("this pipeline '%v' already registered ", name))
     }
 
-    pipeline.Queues[name] = f
+    pipeline.Factories[name] = f
 }
 
-func Clones(name string, q pipeline.Queue) {
+func Queue(name string, Q pipeline.Queue) {
     if name == "" {
         return
     }
 
-    if _, exists := pipeline.Clones[name]; exists {
-        panic(fmt.Sprintf("this pipeline name '%v' already registered ", name))
+    if _, exists := pipeline.Queues[name]; exists {
+        panic(fmt.Sprintf("this pipeline clone name '%v' already registered ", name))
     }
 
-    pipeline.Clones[name] = q
+    pipeline.Queues[name] = Q
 }
