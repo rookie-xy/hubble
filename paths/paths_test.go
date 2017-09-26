@@ -141,7 +141,7 @@ func TestLogsPath(t *testing.T) {
 
 	for _, test := range tests {
 		cfg := Path{Home: test.Home, Logs: test.Logs}
-		if err := Paths.initPaths(&cfg); err != nil {
+		if err := GetInstance().initPaths(&cfg); err != nil {
 			t.Errorf("error on %+v: %v", test, err)
 			continue
 		}

@@ -1,13 +1,14 @@
 agents:
     - file:
-        group: "search"
-        type: "redis_log"
+        group: "nginx"
+        type: "nginx_log"
         paths:
-            - "var/logs/search/redis-parse/error.log"
-            - "var/logs/search/redis-parse/access.log"
+            - "var/log/nginx_log/*"
         codec.line:
             match: "\n"
             max: 16382
+        excludes:
+            #- "*.gz"
         client.kafka:
             topic: "abc"
             broker:
@@ -16,15 +17,17 @@ agents:
                 - "10.21.21.84:9092"
 
     - file:
-        group: "search"
-        type: "nginx_log"
+        group: "redis"
+        type: "redis_log"
+        frequency: 5s
         paths:
-            - "var/logs/search/nginx/error.log"
-            - "var/logs/search/nginx/access.log"
+            - "/var/log/redis_log/*"
         codec.multiline:
             match: "^{ISO_9002_TIMESTAMP}"
             previous: ""
             next: ""
+        excludes:
+            #- "(\.\d)*"
 
 
 proxy:

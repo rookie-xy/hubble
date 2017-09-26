@@ -3,9 +3,9 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../../../golang.org" />
       <root url="file://$PROJECT_DIR$/../../../nsq_alarm_api" />
+      <root url="file://$PROJECT_DIR$/../../../tools" />
       <root url="file://$PROJECT_DIR$/../../../test_log_2" />
       <root url="file://$PROJECT_DIR$/../../../code.google.com" />
-      <root url="file://$PROJECT_DIR$/../../../a" />
       <root url="file://$PROJECT_DIR$/../../../test_log" />
       <root url="file://$PROJECT_DIR$/../../../gopkg.in" />
       <root url="file://$PROJECT_DIR$/../../../ms" />
@@ -22,9 +22,9 @@
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../../../golang.org" />
       <root url="file://$PROJECT_DIR$/../../../nsq_alarm_api" />
+      <root url="file://$PROJECT_DIR$/../../../tools" />
       <root url="file://$PROJECT_DIR$/../../../test_log_2" />
       <root url="file://$PROJECT_DIR$/../../../code.google.com" />
-      <root url="file://$PROJECT_DIR$/../../../a" />
       <root url="file://$PROJECT_DIR$/../../../test_log" />
       <root url="file://$PROJECT_DIR$/../../../gopkg.in" />
       <root url="file://$PROJECT_DIR$/../../../ms" />

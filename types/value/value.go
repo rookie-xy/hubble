@@ -5,6 +5,7 @@ import (
     "github.com/rookie-xy/hubble/configure"
     "github.com/rookie-xy/hubble/state"
     "fmt"
+    "time"
 )
 
 type Value struct {
@@ -131,4 +132,25 @@ func (r *Value) GetIterator(cfg types.Object) types.Iterator {
     }
 
     return c.Iterator()
+}
+
+func (r *Value) GetDuration() time.Duration {
+    if obj := r.Object; obj != nil {
+
+        switch r.GetType() {
+
+        case types.String:
+            duration, err := time.ParseDuration(r.GetString())
+            if err != nil {
+                return state.Error
+            }
+            return duration
+
+        default:
+            return obj.(time.Duration)
+        }
+    }
+
+    // TODO 修改错误信息
+    return state.Error
 }
