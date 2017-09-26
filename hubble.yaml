@@ -3,12 +3,10 @@ agents:
         group: "nginx"
         type: "nginx_log"
         paths:
-            - "var/log/nginx_log/*"
+            - "/var/log/nginx_log/*"
         codec.line:
             match: "\n"
             max: 16382
-        excludes:
-            #- "*.gz"
         client.kafka:
             topic: "abc"
             broker:
@@ -26,8 +24,6 @@ agents:
             match: "^{ISO_9002_TIMESTAMP}"
             previous: ""
             next: ""
-        excludes:
-            #- "(\.\d)*"
 
 
 proxy:
