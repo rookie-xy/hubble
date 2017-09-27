@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af94c93d-bc83-4f67-a0fb-17682d92d410" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hubble.yaml" afterPath="$PROJECT_DIR$/hubble.yaml" />
-    </list>
+    <list default="true" id="af94c93d-bc83-4f67-a0fb-17682d92d410" name="Default" comment="" />
     <ignored path="hubble.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -54,7 +51,7 @@
       <file leaf-file-name="finder.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../modules/agents/log/file/finder/finder.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-777">
+            <state relative-caret-position="-525">
               <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
               <folding>
                 <element signature="e#16#473#0" expanded="true" />
@@ -812,7 +809,7 @@
       <workItem from="1506320069533" duration="9126000" />
       <workItem from="1506395054895" duration="1943000" />
       <workItem from="1506399412977" duration="294000" />
-      <workItem from="1506400449445" duration="9903000" />
+      <workItem from="1506400449445" duration="10644000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1498648610794</created>
@@ -846,11 +843,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="538374000" />
+    <option name="totallyTimeSpent" value="539115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1287,7 +1284,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../modules/agents/log/file/finder/finder.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-777">
+        <state relative-caret-position="-525">
           <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
           <folding>
             <element signature="e#16#473#0" expanded="true" />
