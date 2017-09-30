@@ -85,18 +85,17 @@ func Queue(name string) pipeline.Queue {
     return clone.Clone()
 }
 
-func Forward(name string) proxy.Forward {
+func Forward(name string) (proxy.Forward, error) {
     key := ""
     if name != key {
         key = name
     }
 
     if forward, ok := proxy.Forwards[key]; ok {
-        return forward
+        return forward, nil
     }
 
-    fmt.Errorf("'%v' forward is not available", key)
-    return nil
+    return nil, fmt.Errorf("'%v' forward is not available", key)
 }
 
 func Client(name string, l log.Log, v types.Value) (proxy.Forward, error) {
