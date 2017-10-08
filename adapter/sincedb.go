@@ -7,10 +7,9 @@ import (
 
 type SinceDB interface {
     proxy.Forward
-    Add()  int
-    Find() types.Object
+    Get() []types.Value
 }
 
-func AdapterSinceDB(client proxy.Forward) SinceDB {
+func ToSinceDB(client proxy.Forward) SinceDB {
     return client.(SinceDB)
 }

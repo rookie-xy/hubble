@@ -9,7 +9,7 @@ import (
 type Client func(log.Log, types.Value) (Forward, error)
 
 type Forward interface {
-    Sender(e event.Event) int
+    Sender(e event.Event, batch bool) error
     Close() int
 }
 

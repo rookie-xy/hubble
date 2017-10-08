@@ -1,10 +1,10 @@
 package event
 
-// 适配各种不同的消息
+import "github.com/rookie-xy/hubble/types"
+
 type Event interface {
-    MakeHeader()
-    MakeBody()
-    MakeFooter()
-    Get()
+    ID() string
     Set()
+    Get() string
+    Value() types.Value
 }

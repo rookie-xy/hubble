@@ -22,7 +22,7 @@ type Queue interface {
 }
 
 type enqueue interface {
-    Enqueue(event.Event) int
+    Enqueue(event.Event) error
 }
 
 type dequeue interface {
@@ -30,7 +30,7 @@ type dequeue interface {
 }
 
 type requeue interface {
-    Requeue(event.Event) int
+    Requeue(event.Event) error
 }
 
 var Factories = map[string]Factory{}

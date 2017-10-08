@@ -39,5 +39,8 @@ proxy:
     - forward:
         pipeline.channel:
             max: 1024
+        batch:
+            count: 1024
+            timeout: 10s
         client.sincedb:
             dir: "/data/logs/sincedb"
