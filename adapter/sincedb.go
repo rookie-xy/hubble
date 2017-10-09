@@ -10,6 +10,6 @@ type SinceDB interface {
     Get() []types.Value
 }
 
-func ToSinceDB(client proxy.Forward) SinceDB {
+func FileSinceDB(client proxy.Forward) SinceDB {
     return client.(SinceDB)
 }

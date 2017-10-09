@@ -9,8 +9,6 @@ type Factory func(log.Log, types.Value) (Codec, error)
 
 type Codec interface {
     Encode(in types.Object) (types.Object, error)
-
-    // strategy pattern, split strategy
     Decode(out []byte, atEOF bool) (int, []byte, error)
 }
 

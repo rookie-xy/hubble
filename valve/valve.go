@@ -10,7 +10,7 @@ type Factory func(log.Log, types.Value) (Valve, error)
 
 // chain_of_responsibility
 type Valve interface {
-    Filter(event.Event) bool
+    Filter(text string) bool
     Next(Valve)
 }
 

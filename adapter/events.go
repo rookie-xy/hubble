@@ -8,6 +8,6 @@ type Events interface {
     Batch() []event.Event
 }
 
-func ToEvents(e event.Event) Events {
+func FileEvents(e event.Event) Events {
     return e.(Events)
 }
