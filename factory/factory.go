@@ -9,9 +9,24 @@ import (
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/pipeline"
     "github.com/rookie-xy/hubble/types"
+    "github.com/rookie-xy/hubble/source"
 )
 
 // factory method
+func Source(name string, l log.Log, v types.Value, s source.Source) (source.Source, error) {
+    key := "json"
+    if name != "" {
+        key = name
+    }
+
+    factory := source.Sources[key]
+    if factory == nil {
+        return nil, fmt.Errorf("'%v' codec is not available", key)
+    }
+
+    return factory(l, v, s)
+}
+
 func Codec(name string, l log.Log, v types.Value) (codec.Codec, error) {
     key := "json"
     if name != "" {

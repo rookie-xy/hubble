@@ -4,7 +4,13 @@ import "github.com/rookie-xy/hubble/types"
 
 type Event interface {
     ID() string
-    Set()
-    Get() string
-    Value() types.Value
+    GetHeader() types.SiMap
+    GetBody() Message
+    GetFooter() []byte
+}
+
+type Message interface {
+    ID() uint64
+    GetContent() []byte
+    Json() string
 }

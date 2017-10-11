@@ -3,7 +3,7 @@ package valve
 import (
     "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/log"
-    "github.com/rookie-xy/hubble/event"
+//    "github.com/rookie-xy/hubble/event"
 )
 
 type Factory func(log.Log, types.Value) (Valve, error)

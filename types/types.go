@@ -6,3 +6,5 @@ const (
     String
     Int
 )
+
+type SiMap map[string]interface{}

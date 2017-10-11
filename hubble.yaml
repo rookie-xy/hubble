@@ -4,6 +4,16 @@ agents:
         type: "nginx_log"
         paths:
             - "/var/log/nginx_log/*"
+        source.log:
+            inactive: 12s
+            timeout: 10s
+            removed: false
+            renamed: false
+            eof: false
+            backoff:
+                min: 3s
+                max: 18s
+                factor: 37
         codec.line:
             match: "\n"
             max: 16382
