@@ -1,11 +1,10 @@
 package source
 
 import (
+    "os"
     "io"
     "errors"
     "bufio"
-    "github.com/rookie-xy/hubble/log"
-    "github.com/rookie-xy/hubble/types"
 )
 
 var (
@@ -21,10 +20,10 @@ var (
     ErrNegativeAdvance = bufio.ErrNegativeAdvance
 )
 
-type Factory func(log.Log, types.Value, Source) (Source, error)
-
 type Source interface {
     io.ReadCloser
-}
 
-var Sources = map[string]Factory{}
+    Name() string
+    Stat() (os.FileInfo, error)
+    Continuable() bool // can we continue processing after EOF?
+}

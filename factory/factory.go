@@ -10,21 +10,22 @@ import (
     "github.com/rookie-xy/hubble/pipeline"
     "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/source"
+    "github.com/rookie-xy/hubble/input"
 )
 
 // factory method
-func Source(name string, l log.Log, v types.Value, s source.Source) (source.Source, error) {
+func Input(name string, l log.Log, v types.Value) (input.Input, error) {
     key := "json"
     if name != "" {
         key = name
     }
 
-    factory := source.Sources[key]
+    factory := input.Inputs[key]
     if factory == nil {
-        return nil, fmt.Errorf("'%v' codec is not available", key)
+        return nil, fmt.Errorf("'%v' input is not available", key)
     }
 
-    return factory(l, v, s)
+    return factory(l, v)
 }
 
 func Codec(name string, l log.Log, v types.Value) (codec.Codec, error) {

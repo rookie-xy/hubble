@@ -4,7 +4,7 @@ agents:
         type: "nginx_log"
         paths:
             - "/var/log/nginx_log/*"
-        source.log:
+        input.log:
             inactive: 12s
             timeout: 10s
             removed: false
