@@ -9,8 +9,8 @@ import (
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/pipeline"
     "github.com/rookie-xy/hubble/types"
-    "github.com/rookie-xy/hubble/source"
     "github.com/rookie-xy/hubble/input"
+    "github.com/rookie-xy/hubble/output"
 )
 
 // factory method
@@ -123,6 +123,20 @@ func Client(name string, l log.Log, v types.Value) (proxy.Forward, error) {
     factory := proxy.Clients[key]
     if factory == nil {
         return nil, fmt.Errorf("'%v' client is not available", key)
+    }
+
+    return factory(l, v)
+}
+
+func Output(name string, l log.Log, v types.Value) (output.Output, error) {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    factory := output.Outputs[key]
+    if factory == nil {
+        return nil, fmt.Errorf("'%v' output is not available", key)
     }
 
     return factory(l, v)

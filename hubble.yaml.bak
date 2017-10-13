@@ -25,51 +25,16 @@ agents:
                 - "10.21.21.84:9092"
 
     - file:
-        group: "nginx"
-        type: "nginx_log"
-        paths:
-            - "/var/log/nginx_log/*"
-        input.log:
-            inactive: 12s
-            timeout: 10s
-            removed: false
-            renamed: false
-            eof: false
-            backoff:
-                min: 3s
-                max: 18s
-                factor: 37
-        codec.line:
-            match: "\n"
-            max: 16382
-        output.elasticsearch:
-            client.sincedb:
-                buffer: 1024
-
-
-    - stdin:
         group: "redis"
         type: "redis_log"
         frequency: 5s
         paths:
             - "/var/log/redis_log/*"
-        input.log:
-            inactive: 12s
-            timeout: 10s
-            removed: true
-            renamed: true
-            eof: false
-            backoff:
-                min: 3s
-                max: 18s
-                factor: 37
         codec.multiline:
             match: "^{ISO_9002_TIMESTAMP}"
             previous: ""
             next: ""
-        output.stdout:
-            client.sincedb:
-                buffer: 1024
+
 
 proxy:
     - forward:
@@ -81,7 +46,7 @@ proxy:
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"
 
-    - file:
+    - forward:
         pipeline.channel:
             max: 1024
         batch:
@@ -89,7 +54,3 @@ proxy:
             timeout: 10s
         client.sincedb:
             dir: "/data/logs/sincedb"
-
-    - stdout:
-        pipeline.channel:
-        max: 1024

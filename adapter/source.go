@@ -1,5 +1,6 @@
 package adapter
 
+/*
 import (
 	"os"
     "github.com/rookie-xy/hubble/source"
@@ -16,3 +17,4 @@ type Source interface {
 func LogSource(source source.Source) Source {
     return source.(Source)
 }
+*/
