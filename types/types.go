@@ -1,10 +1,11 @@
 package types
 
 const (
-    Array = iota
-    Map
-    String
-    Int
+    ARRAY = iota
+    MAP
+    STRING
+    INTEGER
 )
 
-type SiMap map[string]interface{}
+type Map   map[interface{}]interface{}
+type Array []interface{}

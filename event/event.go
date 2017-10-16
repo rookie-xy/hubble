@@ -4,7 +4,7 @@ import "github.com/rookie-xy/hubble/types"
 
 type Event interface {
     ID() string
-    GetHeader() types.SiMap
+    GetHeader() types.Map
     GetBody() Message
     GetFooter() []byte
 }

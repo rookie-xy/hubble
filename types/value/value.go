@@ -84,16 +84,16 @@ func (r *Value) GetType() int {
         switch Value.(type) {
 
         case []interface{}:
-            return types.Array
+            return types.ARRAY
 
         case map[interface{}]interface{}:
-            return types.Map
+            return types.MAP
 
         case string:
-            return types.String
+            return types.STRING
 
         case int:
-            return types.Int
+            return types.INTEGER
         }
     }
 
@@ -110,7 +110,7 @@ func (r *Value) GetIterator(cfg types.Object) types.Iterator {
 
     switch r.GetType() {
 
-    case types.Array:
+    case types.ARRAY:
         if iterms := r.GetArray(); iterms != nil {
             for _, iterm := range iterms {
                 r.Object = iterm
@@ -118,7 +118,7 @@ func (r *Value) GetIterator(cfg types.Object) types.Iterator {
             }
         }
 
-    case types.Map:
+    case types.MAP:
         if iterms := r.GetMap(); iterms != nil {
             for k, v := range iterms {
                 c.Add(New(k), v)
@@ -139,7 +139,7 @@ func (r *Value) GetDuration() time.Duration {
 
         switch r.GetType() {
 
-        case types.String:
+        case types.STRING:
             duration, err := time.ParseDuration(r.GetString())
             if err != nil {
                 return state.Error
