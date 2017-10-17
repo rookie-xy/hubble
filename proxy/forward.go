@@ -9,7 +9,8 @@ import (
 type Client func(log.Log, types.Value) (Forward, error)
 
 type Forward interface {
-    Sender(event.Event) error
+    Commit(event.Event) bool
+    Sender() ([]event.Event, error)
     Close() int
 }
 

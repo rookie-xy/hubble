@@ -80,12 +80,15 @@ proxy:
                 - "10.21.21.82:9092"
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"
+             batch:
+                max: 1024
+                timeout: 10s
 
-    - sincedb:
+    - forward:
         pipeline.channel:
             max: 1024
-        batch:
-            max: 1024
-            timeout: 10s
         client.sincedb:
             dir: "/data/logs/sincedb"
+            batch:
+                max: 1024
+                timeout: 10s

@@ -9,7 +9,7 @@ import (
 type SinceDB interface {
     proxy.Forward
     Get() []types.Value
-    Senders([]event.Event) error
+    //Senders([]event.Event) error
 }
 
 func FileSinceDB(client proxy.Forward) SinceDB {
