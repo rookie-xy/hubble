@@ -1,12 +1,19 @@
 package event
 
-import "github.com/rookie-xy/hubble/types"
+import (
+    "github.com/rookie-xy/hubble/state"
+)
 
+type Event interface {
+    state.State
+}
+
+/*
 type Event interface {
     ID() string
     GetHeader() types.Map
     GetBody() Message
-    GetFooter() []byte
+    GetState() state.State
 }
 
 type Message interface {
@@ -14,3 +21,4 @@ type Message interface {
     GetContent() []byte
     Json() string
 }
+*/

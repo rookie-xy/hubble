@@ -1,10 +1,5 @@
 package state
 
-type State interface {
-    Enable()
-    Disable()
-}
-
 const (
     Enable  = true
     Disable = false

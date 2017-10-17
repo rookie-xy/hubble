@@ -1,7 +1,8 @@
 package state
 
 type State interface {
-    Update()
+    On()
+    Off()
 }
 
 /*
