@@ -7,9 +7,8 @@ import (
 )
 
 type SinceDB interface {
-    proxy.Forward
+	BatchForward
     Get() []types.Value
-    //Senders([]event.Event) error
 }
 
 func FileSinceDB(client proxy.Forward) SinceDB {

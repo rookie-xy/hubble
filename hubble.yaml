@@ -17,7 +17,7 @@ agents:
         codec.line:
             match: "\n"
             max: 16382
-        client.kafka:
+        output.kafka:
             topic: "abc"
             broker:
                 - "10.21.21.82:9092"
@@ -43,8 +43,7 @@ agents:
             match: "\n"
             max: 16382
         output.elasticsearch:
-            client.sincedb:
-                buffer: 1024
+            buffer: 1024
 
 
     - stdin:
@@ -68,8 +67,7 @@ agents:
             previous: ""
             next: ""
         output.stdout:
-            client.sincedb:
-                buffer: 1024
+            buffer: 1024
 
 proxy:
     - forward:
@@ -80,11 +78,11 @@ proxy:
                 - "10.21.21.82:9092"
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"
-             batch:
+            batch:
                 max: 1024
                 timeout: 10s
 
-    - forward:
+    - sincedb:
         pipeline.channel:
             max: 1024
         client.sincedb:
