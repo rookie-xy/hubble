@@ -43,36 +43,11 @@ agents:
             match: "\n"
             max: 16382
         output.elasticsearch:
-            buffer: 1024
-
-
-    - stdin:
-        group: "redis"
-        type: "redis_log"
-        frequency: 5s
-        paths:
-            - "/var/log/redis_log/*"
-        input.log:
-            inactive: 12s
-            timeout: 10s
-            removed: true
-            renamed: true
-            eof: false
-            backoff:
-                min: 3s
-                max: 18s
-                factor: 37
-        codec.multiline:
-            match: "^{ISO_9002_TIMESTAMP}"
-            previous: ""
-            next: ""
-        output.stdout:
-            buffer: 1024
+            pipeline.channel:
+                max: 1024
 
 proxy:
     - forward:
-        pipeline.channel:
-            max: 1024
         client.elasticsearch:
             cluster:
                 - "10.21.21.82:9092"
