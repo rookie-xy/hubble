@@ -1,6 +1,9 @@
 package adapter
 
-import "github.com/rookie-xy/hubble/event"
+import (
+    "github.com/rookie-xy/hubble/event"
+    "github.com/rookie-xy/hubble/pipeline"
+)
 
 type MessageEvent interface {
     event.Event
@@ -12,4 +15,13 @@ type MessageEvent interface {
 
 func ToMessageEvent(e event.Event) MessageEvent {
     return e.(MessageEvent)
+}
+
+type PipelineEvent interface {
+    event.Event
+    pipeline.Queue
+}
+
+func ToPipelineEvent(e event.Event) PipelineEvent {
+    return e.(PipelineEvent)
 }

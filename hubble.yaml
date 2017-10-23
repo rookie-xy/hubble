@@ -48,6 +48,8 @@ agents:
 
 proxy:
     - forward:
+        pipeline.queue:
+            max: 1024
         client.elasticsearch:
             cluster:
                 - "10.21.21.82:9092"
