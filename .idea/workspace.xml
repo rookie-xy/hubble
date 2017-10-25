@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f78f622-c869-4fa1-bb51-e77e96ccd0b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/adapter/pipeline.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adapter/event.go" afterPath="$PROJECT_DIR$/adapter/event.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hubble.yaml" afterPath="$PROJECT_DIR$/hubble.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/output.go" afterPath="$PROJECT_DIR$/output/output.go" />
-    </list>
+    <list default="true" id="8f78f622-c869-4fa1-bb51-e77e96ccd0b2" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
