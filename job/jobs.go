@@ -17,7 +17,6 @@ type Jobs struct {
     log   log.Log
 }
 
-// NewJobs creates a new registry object
 func New(log log.Log) *Jobs {
     return &Jobs{
         log: log,
