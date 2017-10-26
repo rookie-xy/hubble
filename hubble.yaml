@@ -17,12 +17,9 @@ agents:
         codec.line:
             match: "\n"
             max: 16382
-        output.kafka:
-            topic: "abc"
-            broker:
-                - "10.21.21.82:9092"
-                - "10.21.21.83:9092"
-                - "10.21.21.84:9092"
+        output.stdout:
+            pipeline.channel:
+                max: 1024
 
     - file:
         group: "nginx"

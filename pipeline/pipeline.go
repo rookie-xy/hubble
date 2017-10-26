@@ -6,8 +6,6 @@ import (
     "github.com/rookie-xy/hubble/types"
 )
 
-const Channel  = "channel"
-
 //mediator
 type Factory func(log.Log, types.Value) (Queue, error)
 

@@ -2,8 +2,6 @@ package plugin
 
 import "fmt"
 
-const Flag = "plugin"
-
 type Loader func(p interface{}) error
 
 var registry = map[string]Loader{}
