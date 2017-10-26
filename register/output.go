@@ -5,7 +5,7 @@ import (
     "github.com/rookie-xy/hubble/output"
 )
 
-func Output(name string, c output.Factory) {
+func Output(name string, o output.Factory) {
 //    name = name[strings.LastIndex(name, ".") + 1:]
     if name == "" {
         return
@@ -15,5 +15,5 @@ func Output(name string, c output.Factory) {
         panic(fmt.Sprintf("output '%v' already registered ", name))
     }
 
-    output.Outputs[name] = c
+    output.Outputs[name] = o
 }

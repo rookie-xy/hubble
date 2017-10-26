@@ -56,7 +56,7 @@ proxy:
                 max: 1024
                 timeout: 10s
 
-    - sincedb:
+    - sinceDB:
         pipeline.channel:
             max: 1024
         client.sincedb:
