@@ -17,7 +17,7 @@ agents:
         codec.line:
             match: "\n"
             max: 16382
-        output.stdout:
+        output.elasticsearch:
             pipeline.channel:
                 max: 1024
 
@@ -45,7 +45,7 @@ agents:
 
 proxy:
     - forward:
-        pipeline.queue:
+        pipeline.channel:
             max: 1024
         client.elasticsearch:
             cluster:
@@ -57,10 +57,10 @@ proxy:
                 timeout: 10s
 
     - sinceDB:
-        pipeline.channel:
-            max: 1024
-        client.sincedb:
+        client.sinceDB:
             dir: "/data/logs/sincedb"
             batch:
                 max: 1024
                 timeout: 10s
+        pipeline.channel:
+            max: 1024

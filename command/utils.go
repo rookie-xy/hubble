@@ -6,6 +6,7 @@ import (
     "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/state"
     "github.com/rookie-xy/hubble/plugin"
+    "fmt"
 )
 
 func Setup(flag, value string) int {
@@ -36,6 +37,7 @@ func File(nameSpace, key string, value types.Object) int {
 
             if item.Command.flag == plugin.Flag {
                 if strings.HasPrefix(key, prefix) {
+                    fmt.Println("pluginnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn: ", key)
                     item.Command.key = key
                 } else {
                     continue
