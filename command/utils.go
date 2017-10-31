@@ -6,7 +6,7 @@ import (
     "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/state"
     "github.com/rookie-xy/hubble/plugin"
-    "fmt"
+//    "fmt"
 )
 
 func Setup(flag, value string) int {
@@ -22,10 +22,10 @@ func Setup(flag, value string) int {
     return state.Error
 }
 
-func File(nameSpace, key string, value types.Object) int {
+func File(scope, name, key string, value types.Object) int {
     for _, item := range Pool {
 
-        if item.Scope != nameSpace || item.Type != FILE {
+        if item.Scope != scope || item.Name != name || item.Type != FILE {
             continue
         }
 
@@ -37,7 +37,6 @@ func File(nameSpace, key string, value types.Object) int {
 
             if item.Command.flag == plugin.Flag {
                 if strings.HasPrefix(key, prefix) {
-                    fmt.Println("pluginnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn: ", key)
                     item.Command.key = key
                 } else {
                     continue

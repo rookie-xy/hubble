@@ -10,9 +10,8 @@ type Item struct {
     Command  *Command
     Type      int
     Scope     string
+    Name      string
     Set       SetFunc
-    State     bool
-    Offset    uintptr
     Load      types.Object
 }
 

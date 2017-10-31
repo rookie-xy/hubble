@@ -2,12 +2,12 @@ package register
 
 import (
     "fmt"
-    "strings"
+//    "strings"
     "github.com/rookie-xy/hubble/codec"
 )
 
 func Codec(name string, f codec.Factory) {
-    name = name[strings.LastIndex(name, ".") + 1:]
+    //name = name[strings.LastIndex(name, ".") + 1:]
     if name == "" {
         return
     }

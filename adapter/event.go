@@ -25,3 +25,8 @@ type PipelineEvent interface {
 func ToPipelineEvent(e event.Event) PipelineEvent {
     return e.(PipelineEvent)
 }
+
+func Pipeline2Event(Q pipeline.Queue) event.Event {
+    pe := Q.(PipelineEvent)
+    return pe.(event.Event)
+}
