@@ -4,6 +4,7 @@ agents:
         type: "nginx_log"
         paths:
             - "/var/log/nginx_log/*"
+            - "/Users/mengshi/go/src/github.com/rookie-xy/hubble/nginx/*"
         input.log:
             inactive: 12s
             timeout: 10s
@@ -22,10 +23,11 @@ agents:
                 max: 1024
 
     - file:
-        group: "nginx"
-        type: "nginx_log"
+        group: "redis"
+        type: "redis_log"
         paths:
-            - "/var/log/nginx_log/*"
+            - "/var/log/redis_log/*"
+            - "/Users/mengshi/go/src/github.com/rookie-xy/hubble/redis/*"
         input.log:
             inactive: 12s
             timeout: 10s
@@ -36,9 +38,10 @@ agents:
                 min: 3s
                 max: 18s
                 factor: 37
-        codec.line:
-            match: "\n"
-            max: 16382
+        codec.multiline:
+            match: "^{ISO_9002_TIMESTAMP}"
+            previous: ""
+            next: ""
         output.elasticsearch:
             pipeline.channel:
                 max: 1024
@@ -58,7 +61,8 @@ proxy:
 
     - sinceDB:
         client.sinceDB:
-            path: "/data/logs/sinceDB"
+            #path: "/data/logs/sinceDB"
+            path: "/Users/mengshi/go/src/github.com/rookie-xy/hubble/data/sinceDB"
             batch:
                 max: 512
                 timeout: 10s
