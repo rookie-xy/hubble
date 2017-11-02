@@ -61,8 +61,7 @@ proxy:
 
     - sinceDB:
         client.sinceDB:
-            #path: "/data/logs/sinceDB"
-            path: "/Users/mengshi/go/src/github.com/rookie-xy/hubble/data/sinceDB"
+            path: "/home/go/src/github.com/rookie-xy/hubble/data/sinceDB"
             batch:
                 max: 512
                 timeout: 10s
