@@ -3,7 +3,20 @@ package adapter
 import (
     "github.com/rookie-xy/hubble/event"
     "github.com/rookie-xy/hubble/pipeline"
+    "github.com/rookie-xy/hubble/types"
 )
+
+type FileEvent interface {
+    event.Event
+
+    GetHeader() types.Map
+    GetBody() MessageEvent
+    GetFooter() []byte
+}
+
+func ToFileEvent(e event.Event) FileEvent {
+    return e.(FileEvent)
+}
 
 type MessageEvent interface {
     event.Event
