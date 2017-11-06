@@ -4,7 +4,7 @@ agents:
         type: "nginx_log"
         paths:
             - "/var/log/nginx_log/*"
-            - "/Users/mengshi/go/src/github.com/rookie-xy/hubble/nginx/*"
+            #- "/Users/mengshi/go/src/github.com/rookie-xy/hubble/nginx/*"
         input.log:
             inactive: 12s
             timeout: 10s
@@ -27,7 +27,7 @@ agents:
         type: "redis_log"
         paths:
             - "/var/log/redis_log/*"
-            - "/Users/mengshi/go/src/github.com/rookie-xy/hubble/redis/*"
+            #- "/Users/mengshi/go/src/github.com/rookie-xy/hubble/redis/*"
         input.log:
             inactive: 12s
             timeout: 10s

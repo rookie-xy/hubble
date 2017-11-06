@@ -87,7 +87,7 @@ func (r *Jobs) Start(j Job) {
         err := j.Run()
         if err != nil {
             //r.log.Print("Error running prospector: %v", err)
-            fmt.Println("Error running prospector: %v", err)
+            fmt.Printf("Error running colector: %v\n", err)
         }
     }()
 }

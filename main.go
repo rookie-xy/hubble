@@ -3,22 +3,22 @@ package main
 import (
     "os"
 
-    "github.com/rookie-xy/hubble/command"
-    "github.com/rookie-xy/hubble/module"
-    "github.com/rookie-xy/hubble/builder"
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/state"
     "github.com/rookie-xy/hubble/paths"
+    "github.com/rookie-xy/hubble/module"
+    "github.com/rookie-xy/hubble/command"
+    "github.com/rookie-xy/hubble/builder"
 
   _ "github.com/rookie-xy/modules"
 )
 
 var (
     version = command.New("-v", "version", "0.0.1",    "Display engine version, golang version, " +
-                                                       "system architecture and other information"    )
+                                                                            "system architecture and other information"    )
     help    = command.New("-?",  "help",    "",        "Assist information on how to use the system"  )
     check   = command.New("-cc", "check",  false,      "Pre check before system startup"              )
-    home    = command.New("-h",  "home",   paths.Home(), "Program root path"                           )
+    home    = command.New("-h",  "home",   paths.Home(),     "Program root path"                           )
 )
 
 var commands = []command.Item{
