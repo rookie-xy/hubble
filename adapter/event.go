@@ -43,3 +43,11 @@ func Pipeline2Event(Q pipeline.Queue) event.Event {
     pe := Q.(PipelineEvent)
     return pe.(event.Event)
 }
+
+type SinceDBEvent interface {
+    event.Event
+}
+
+func ToSinceDBEvent(e event.Event) SinceDBEvent {
+    return e.(SinceDBEvent)
+}

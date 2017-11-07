@@ -1,10 +1,14 @@
 package state
 
-type State interface {
-    On()
-    Off()
+type State struct {
+	On bool
 }
 
+func New() State {
+	return State{
+		On: false,
+	}
+}
 /*
 type ModileAlertStater interface {
 	Alert() string

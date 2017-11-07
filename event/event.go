@@ -5,7 +5,7 @@ import (
 )
 
 type Event interface {
-    state.State
+    state.Status
 }
 
 /*
