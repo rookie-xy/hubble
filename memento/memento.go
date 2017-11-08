@@ -9,7 +9,7 @@ type Originator struct {
 }
 
 func (r *Originator) CreateMemento() *Memento {
-   	return &Memento{state: r.State}
+   	return &Memento{file: r.State}
 }
 
 func (r *Originator) SetMemento(memento *Memento) {
@@ -17,11 +17,11 @@ func (r *Originator) SetMemento(memento *Memento) {
 }
 
 type Memento struct {
-   	state string
+   	file string
 }
 
 func (r *Memento) GetState() string {
-   	return r.state
+   	return r.file
 }
 
 type Caretaker struct {

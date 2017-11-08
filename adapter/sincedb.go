@@ -3,11 +3,12 @@ package adapter
 import (
     "github.com/rookie-xy/hubble/proxy"
     "github.com/rookie-xy/hubble/types"
+    "github.com/rookie-xy/hubble/models/file"
 )
 
 type SinceDB interface {
     BatchForward
-    Get() []types.Value
+    Load() []file.State
 }
 
 func FileSinceDB(client proxy.Forward) SinceDB {

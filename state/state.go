@@ -1,33 +1,36 @@
 package state
 
-type State struct {
-	On bool
+type State interface {
+    //On bool
+    On() bool
+    Off()
 }
-
+/*
 func New() State {
 	return State{
 		On: false,
 	}
 }
+*/
 /*
 type ModileAlertStater interface {
 	Alert() string
 }
 
 type ModileAlert struct {
-	state ModileAlertStater
+	file ModileAlertStater
 }
 
 func (self *ModileAlert) Alert() string {
-	return self.state.Alert()
+	return self.file.Alert()
 }
 
-func (self *ModileAlert) SetState(state ModileAlertStater) {
-	self.state = state
+func (self *ModileAlert) SetState(file ModileAlertStater) {
+	self.file = file
 }
 
 func NewModileAlert() *ModileAlert {
-	return &ModileAlert{state: &MobileAlertVibration{}}
+	return &ModileAlert{file: &MobileAlertVibration{}}
 }
 
 type MobileAlertVibration struct {

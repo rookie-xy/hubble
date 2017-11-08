@@ -5,7 +5,8 @@ import (
 )
 
 type Event interface {
-    state.Status
+//    file.Status
+    state.State
 }
 
 /*
@@ -13,7 +14,7 @@ type Event interface {
     ID() string
     GetHeader() types.Map
     GetBody() Message
-    GetState() state.State
+    GetState() file.State
 }
 
 type Message interface {
