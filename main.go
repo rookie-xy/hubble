@@ -75,8 +75,8 @@ func init() {
         }
 
         flag, value := argv[i], argv[j]
-        if status := command.Setup(flag, value); status != state.Ok {
-            exit(status)
+        if err := command.Setup(flag, value); err != nil {
+            exit(0)
         }
 
         i++

@@ -4,11 +4,13 @@ import (
     "github.com/rookie-xy/hubble/event"
     "github.com/rookie-xy/hubble/pipeline"
     "github.com/rookie-xy/hubble/types"
+    "github.com/rookie-xy/hubble/models/file"
 )
 
 type FileEvent interface {
     event.Event
 
+    GetState() file.State
     GetHeader() types.Map
     GetBody() MessageEvent
     GetFooter() []byte

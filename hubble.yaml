@@ -38,10 +38,9 @@ agents:
                 min: 3s
                 max: 18s
                 factor: 37
-        codec.multiline:
-            match: "^{ISO_9002_TIMESTAMP}"
-            previous: ""
-            next: ""
+        codec.line:
+            match: "\n"
+            max: 16382
         output.elasticsearch:
             pipeline.channel:
                 max: 1024
@@ -61,7 +60,7 @@ proxy:
 
     - sinceDB:
         client.sinceDB:
-            path: "/home/go/src/github.com/rookie-xy/hubble/data/sinceDB"
+            file: "/home/go/src/github.com/rookie-xy/hubble/data/sinceDB"
             batch:
                 max: 512
                 timeout: 10s

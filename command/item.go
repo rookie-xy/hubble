@@ -4,7 +4,7 @@ import (
     "github.com/rookie-xy/hubble/types"
 )
 
-type SetFunc func(cmd *Item, meta *Command, val types.Object) int
+type SetFunc func(cmd *Item, meta *Command, val types.Object) error
 
 type Item struct {
     Command  *Command

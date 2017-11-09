@@ -15,7 +15,6 @@ type State struct {
     Timestamp  time.Time      `json:"timestamp"`
     TTL        time.Duration  `json:"ttl"`
     Type       string         `json:"type"`
-    //File       id.ID
 }
 
 func New() State {

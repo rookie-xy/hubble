@@ -2,7 +2,6 @@ package adapter
 
 import (
     "github.com/rookie-xy/hubble/proxy"
-    "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/models/file"
 )
 

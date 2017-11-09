@@ -4,12 +4,11 @@ import (
     "strings"
 
     "github.com/rookie-xy/hubble/types"
-    "github.com/rookie-xy/hubble/state"
     "github.com/rookie-xy/hubble/plugin"
-//    "fmt"
+    "fmt"
 )
 
-func Setup(flag, value string) int {
+func Setup(flag, value string) error {
     for _, item := range Pool {
 
         if item.Type != LINE || item.Command.flag != flag {
@@ -19,10 +18,10 @@ func Setup(flag, value string) int {
         return item.Set(&item, item.Command, value)
     }
 
-    return state.Error
+    return nil
 }
 
-func File(scope, name, key string, value types.Object) int {
+func File(scope, name, key string, value types.Object) error {
     for _, item := range Pool {
 
         if item.Scope != scope || item.Name != name || item.Type != FILE {
@@ -50,15 +49,15 @@ func File(scope, name, key string, value types.Object) int {
         return item.Set(&item, item.Command, value)
     }
 
-    return state.Error
+    return nil
 }
 
-func SetObject(_ *Item, c *Command, value types.Object) int {
+func SetObject(_ *Item, c *Command, value types.Object) error {
     if c == nil || value == nil {
-        return state.Error
+        return fmt.Errorf("command or value is nil")
     }
 
     c.value = value
 
-    return state.Ok
+    return nil
 }

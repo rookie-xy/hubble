@@ -3,10 +3,9 @@ package command
 import (
     "fmt"
     "github.com/rookie-xy/hubble/types"
-    "github.com/rookie-xy/hubble/state"
 )
 
-func List(_ *Item, _ *Command, _ types.Object) int {
+func List(_ *Item, _ *Command, _ types.Object) error {
     for _, item := range Pool {
         if item.Type != LINE {
             continue
@@ -17,6 +16,6 @@ func List(_ *Item, _ *Command, _ types.Object) int {
         }
     }
 
-    return state.Done
+    return nil
 }
 

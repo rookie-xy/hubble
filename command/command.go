@@ -40,7 +40,7 @@ func (r *Command) GetValue() types.Value {
     return nil
 }
 
-func (r *Command) SetValue(o types.Object) int {
+func (r *Command) SetValue(o types.Object) error {
     return SetObject(nil, r, o)
 }
 

@@ -6,6 +6,6 @@ import (
 )
 
 // the build
-type build func(name string, i types.Iterator, l module.Load) int
+type build func(name string, i types.Iterator, l module.Load) error
 
 var Build build = nil

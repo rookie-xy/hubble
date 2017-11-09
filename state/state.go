@@ -1,17 +1,9 @@
 package state
 
 type State interface {
-    //On bool
     On() bool
     Off()
 }
-/*
-func New() State {
-	return State{
-		On: false,
-	}
-}
-*/
 /*
 type ModileAlertStater interface {
 	Alert() string

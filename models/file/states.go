@@ -85,7 +85,7 @@ func (r *States) Count() int {
 }
 
 // Returns a copy of the file states
-func (r *States) GetStates() []State {
+func (r *States) Get() []State {
     r.RLock()
     defer r.RUnlock()
 
@@ -95,7 +95,7 @@ func (r *States) GetStates() []State {
     return newStates
 }
 
-func (r *States) SetStates(states []State) {
+func (r *States) Set(states []State) {
     r.Lock()
     defer r.Unlock()
 
@@ -104,7 +104,7 @@ func (r *States) SetStates(states []State) {
 
 func (r *States) Copy() *States {
     states := News()
-    states.States = r.GetStates()
+    states.States = r.Get()
 
     return states
 }
