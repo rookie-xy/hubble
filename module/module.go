@@ -2,9 +2,9 @@ package module
 
 import (
     "github.com/rookie-xy/hubble/log"
-    "github.com/rookie-xy/hubble/state"
     "github.com/rookie-xy/hubble/factory"
     "github.com/rookie-xy/hubble/memento"
+    "fmt"
 )
 
 //type NewFunc func(log log.Log) Template
@@ -72,12 +72,12 @@ func (r *module) Load(module Template) {
     }
 }
 
-func (r *module) Configure(cfg Template) int {
+func (r *module) Configure(cfg Template) error {
     if cfg != nil {
         r.configure = cfg
 
     } else {
-        return state.Error
+        return fmt.Errorf("cfg is nil")
     }
 
     r.configure.Init()
@@ -90,5 +90,5 @@ func (r *module) Configure(cfg Template) int {
 
     go r.configure.Main()
 
-    return state.Ok
+    return nil
 }

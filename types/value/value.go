@@ -3,7 +3,6 @@ package value
 import (
     "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/configure"
-    "github.com/rookie-xy/hubble/state"
     "fmt"
     "time"
 )
@@ -34,29 +33,27 @@ func (r *Value) GetBytes() []byte {
     return nil
 }
 
-func (r *Value) GetInt() int {
+func (r *Value) GetInt() (int, error) {
     if obj := r.Object; obj != nil {
-        return obj.(int)
+        return obj.(int), nil
     }
 
-    return state.Error
+    return -1, fmt.Errorf("Not found object")
 }
 
-func (r *Value) GetUint64() uint64 {
+func (r *Value) GetUint64() (uint64, error) {
     if obj := r.Object; obj != nil {
-        return obj.(uint64)
+        return obj.(uint64), nil
     }
 
     // TODO 修改错误信息
-    return state.Ok
+    return 0, fmt.Errorf("Not found object")
 }
 
 func (r *Value) GetBool() bool {
     if obj := r.Object; obj != nil {
         return obj.(bool)
     }
-
-    fmt.Println("bool value is not found")
 
     return false
 }
@@ -134,7 +131,7 @@ func (r *Value) GetIterator(cfg types.Object) types.Iterator {
     return c.Iterator()
 }
 
-func (r *Value) GetDuration() time.Duration {
+func (r *Value) GetDuration() (time.Duration, error) {
     if obj := r.Object; obj != nil {
 
         switch r.GetType() {
@@ -142,15 +139,15 @@ func (r *Value) GetDuration() time.Duration {
         case types.STRING:
             duration, err := time.ParseDuration(r.GetString())
             if err != nil {
-                return state.Error
+                return duration, err
             }
-            return duration
+            return duration, nil
 
         default:
-            return obj.(time.Duration)
+            return obj.(time.Duration), nil
         }
     }
 
     // TODO 修改错误信息
-    return state.Error
+    return -1, fmt.Errorf("get duration object is nil")
 }

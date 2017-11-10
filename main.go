@@ -4,7 +4,6 @@ import (
     "os"
 
     "github.com/rookie-xy/hubble/log"
-    "github.com/rookie-xy/hubble/state"
     "github.com/rookie-xy/hubble/paths"
     "github.com/rookie-xy/hubble/module"
     "github.com/rookie-xy/hubble/command"
@@ -61,7 +60,7 @@ func init() {
     argc, argv := len(os.Args), os.Args
     if argc <= 1 {
         command.Setup(help.GetFlag(), "")
-        exit(state.Done)
+        exit(-1)
     }
 
     for i := 1; i < argc; i++ {
@@ -99,7 +98,7 @@ func main() {
 
     director := builder.Directors(module)
     if director == nil {
-        exit(state.Error)
+        exit(-1)
     }
 
     director.Construct(core)
@@ -115,7 +114,7 @@ func main() {
 
     module.Main()
 
-    module.Exit(state.Ok)
+    module.Exit(-1)
 }
 
 func exit(code int) {

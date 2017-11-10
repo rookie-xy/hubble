@@ -5,7 +5,7 @@ import (
 )
 
 type Builder interface {
-    Configure(m module.Template) int
+    Configure(m module.Template) error
     module.Module
 }
 

@@ -5,7 +5,7 @@ import (
 )
 
 type Observer interface {
-    Update(o types.Object) int
+    Update(o types.Object) error
 }
 
 var Observers = map[string]Observer{}

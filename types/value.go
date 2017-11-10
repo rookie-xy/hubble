@@ -5,10 +5,10 @@ import "time"
 type Value interface {
     GetString() string
     GetBytes() []byte
-    GetInt() int
-    GetUint64() uint64
+    GetInt() (int, error)
+    GetUint64() (uint64, error)
     GetBool() bool
-    GetDuration() time.Duration
+    GetDuration() (time.Duration, error)
     GetArray() []interface{}
     GetMap() map[interface{}]interface{}
     GetIterator(Object) Iterator

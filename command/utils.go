@@ -52,12 +52,11 @@ func File(scope, name, key string, value types.Object) error {
     return nil
 }
 
-func SetObject(_ *Item, c *Command, value types.Object) error {
-    if c == nil || value == nil {
-        return fmt.Errorf("command or value is nil")
+func SetObject(_ *Item, c *Command, o types.Object) error {
+    if c == nil || o == nil {
+        return fmt.Errorf("command or object is nil")
     }
 
-    c.value = value
-
+    c.object = o
     return nil
 }

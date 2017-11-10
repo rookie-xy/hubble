@@ -4,7 +4,7 @@ const (
     Enable  = true
     Disable = false
 )
-
+/*
 const (
     Ok       = 0
     Error    = -1
@@ -21,3 +21,4 @@ const (
     RECONFIGURE = 2
     EXIT = 3
 )
+*/

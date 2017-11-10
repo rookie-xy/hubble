@@ -8,12 +8,12 @@ import (
 type Command struct {
     flag     string
     key      string
-    value    types.Object
+    object   types.Object
     details  string
 }
 
-func New(flag string, key string, value types.Object, details string) *Command {
-    return &Command{ flag, key, value, details }
+func New(flag string, key string, object types.Object, details string) *Command {
+    return &Command{ flag, key, object, details }
 }
 
 func (r *Command) GetFlag() string {
@@ -33,11 +33,15 @@ func (r *Command) GetDetails() string {
 }
 
 func (r *Command) GetValue() types.Value {
-    if v := r.value; v != nil {
-        return value.New(v)
+    if o := r.object; o != nil {
+        return value.New(o)
     }
 
     return nil
+}
+
+func (r *Command) GetObject() types.Object {
+    return r.object
 }
 
 func (r *Command) SetValue(o types.Object) error {
@@ -45,5 +49,5 @@ func (r *Command) SetValue(o types.Object) error {
 }
 
 func (r *Command) Clear() {
-    r.value = nil
+    r.object = nil
 }

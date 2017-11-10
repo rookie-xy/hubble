@@ -41,7 +41,7 @@ agents:
         codec.line:
             match: "\n"
             max: 16382
-        output.elasticsearch:
+        client.kafka:
             pipeline.channel:
                 max: 1024
 
@@ -51,6 +51,18 @@ proxy:
             max: 1024
         client.elasticsearch:
             cluster:
+                - "10.21.21.82:9092"
+                - "10.21.21.83:9092"
+                - "10.21.21.84:9092"
+            batch:
+                max: 1024
+                timeout: 10s
+
+    - forward:
+        pipeline.channel:
+            max: 1024
+        client.kafka:
+            broker:
                 - "10.21.21.82:9092"
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"

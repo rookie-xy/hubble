@@ -10,7 +10,7 @@ type Client func(log.Log, types.Value) (Forward, error)
 
 type Forward interface {
     Sender(event.Event) error
-    Close() int
+    Close()
 }
 
 var Clients = map[string]Client{}

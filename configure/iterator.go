@@ -7,7 +7,6 @@ import (
 //    "github.com/rookie-xy/hubble/module"
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/observer"
-    "github.com/rookie-xy/hubble/state"
 )
 
 // Iterator
@@ -36,7 +35,7 @@ func (r *Configure) Attach(o observer.Observer) {
 
 func (r *Configure) Notify(o types.Object) {
     for _, observer := range r.observers {
-        if observer.Update(o) == state.Error {
+        if observer.Update(o) != nil {
             break
         }
     }
