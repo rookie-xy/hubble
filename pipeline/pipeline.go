@@ -24,7 +24,8 @@ type enqueue interface {
 }
 
 type dequeue interface {
-    Dequeue(size int) (event.Event, error)
+    Dequeue() (event.Event, error)
+    Dequeues(size int) ([]event.Event, error)
 }
 
 type requeue interface {

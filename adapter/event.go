@@ -10,14 +10,24 @@ import (
 type FileEvent interface {
     event.Event
 
-    GetState() file.State
     GetHeader() types.Map
     GetBody() MessageEvent
-    GetFooter() []byte
+    GetFooter() file.State
 }
 
 func ToFileEvent(e event.Event) FileEvent {
     return e.(FileEvent)
+}
+
+type StdinEvent interface {
+    event.Event
+
+    GetHeader() types.Map
+    GetBody() MessageEvent
+}
+
+func ToStdinEvent(e event.Event) StdinEvent {
+    return e.(StdinEvent)
 }
 
 type MessageEvent interface {
@@ -44,12 +54,4 @@ func ToPipelineEvent(e event.Event) PipelineEvent {
 func Pipeline2Event(Q pipeline.Queue) event.Event {
     pe := Q.(PipelineEvent)
     return pe.(event.Event)
-}
-
-type SinceDBEvent interface {
-    event.Event
-}
-
-func ToSinceDBEvent(e event.Event) SinceDBEvent {
-    return e.(SinceDBEvent)
 }

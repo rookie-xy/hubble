@@ -41,7 +41,7 @@ agents:
         codec.line:
             match: "\n"
             max: 16382
-        client.kafka:
+        output.kafka:
             pipeline.channel:
                 max: 1024
 
@@ -71,10 +71,10 @@ proxy:
                 timeout: 10s
 
     - sinceDB:
-        client.sinceDB:
-            file: "/home/go/src/github.com/rookie-xy/hubble/data/sinceDB"
-            batch:
-                max: 512
-                timeout: 10s
         pipeline.channel:
             max: 512
+            timer: 2s
+        batch: 128
+        client.sinceDB:
+            file: "/home/go/src/github.com/rookie-xy/hubble/data/sinceDB"
+
