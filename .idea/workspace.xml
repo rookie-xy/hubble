@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f78f622-c869-4fa1-bb51-e77e96ccd0b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pipeline/errors.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/errors.go" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/data/sinceDB" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/state/const.go" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adapter/event.go" afterPath="$PROJECT_DIR$/adapter/event.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adapter/forward.go" afterPath="$PROJECT_DIR$/adapter/forward.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/event/event.go" afterPath="$PROJECT_DIR$/event/event.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hubble.yaml" afterPath="$PROJECT_DIR$/hubble.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pipeline/pipeline.go" afterPath="$PROJECT_DIR$/pipeline/pipeline.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/source.go" afterPath="$PROJECT_DIR$/source/source.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/state/state.go" afterPath="$PROJECT_DIR$/state/state.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,50 +18,62 @@
       <file leaf-file-name="sinceDB.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../plugins/client/sinceDB/sinceDB.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="110">
+              <caret line="64" column="8" lean-forward="false" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
               <folding>
-                <element signature="e#17#550#0" expanded="true" />
+                <element signature="e#17#494#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="event.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/event/event.go">
+      <file leaf-file-name="sinceDB" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data/sinceDB">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hubble.yaml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../modules/proxy/forward/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="104" column="38" lean-forward="false" selection-start-line="104" selection-start-column="38" selection-end-line="104" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hubble.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hubble.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="75" column="20" lean-forward="false" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+            <state relative-caret-position="434">
+              <caret line="69" column="22" lean-forward="false" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="value.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/types/value/value.go">
+      <file leaf-file-name="channel.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../plugins/pipeline/channel/channel.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="193">
+              <caret line="50" column="7" lean-forward="false" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
+              <folding>
+                <element signature="e#17#305#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pipeline.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pipeline/pipeline.go">
+      <file leaf-file-name="worker.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../modules/proxy/forward/worker/worker.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+            <state relative-caret-position="93">
+              <caret line="65" column="36" lean-forward="false" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -110,23 +113,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="events.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/event/events.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="sinceDB.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../modules/proxy/sinceDB/sinceDB.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="121" column="11" lean-forward="false" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="11" />
+            <state relative-caret-position="103">
+              <caret line="118" column="16" lean-forward="false" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
               <folding>
-                <marker date="1510393871330" expanded="true" signature="2990:3248" ph="{...}" />
+                <element signature="e#17#485#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,8 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/models/state/states.go" />
-        <option value="$PROJECT_DIR$/../modules/agents/file/scanner/scanner.go" />
         <option value="$PROJECT_DIR$/adapter/sincedb.go" />
         <option value="$PROJECT_DIR$/../plugins/client/sinceDB/dump/file.go" />
         <option value="$PROJECT_DIR$/models/file/states.go" />
@@ -168,7 +159,6 @@
         <option value="$PROJECT_DIR$/../modules/proxy/bundle.go" />
         <option value="$PROJECT_DIR$/../modules/configure/bundle.go" />
         <option value="$PROJECT_DIR$/../plugins/output/elasticsearch/elasticsearch.go" />
-        <option value="$PROJECT_DIR$/../plugins/pipeline/channel/channel.go" />
         <option value="$PROJECT_DIR$/../plugins/output/sincedb/sincedb.go" />
         <option value="$PROJECT_DIR$/../modules/agents/bundle.go" />
         <option value="$PROJECT_DIR$/types/value.go" />
@@ -191,14 +181,17 @@
         <option value="$PROJECT_DIR$/event/event.go" />
         <option value="$PROJECT_DIR$/state/const.go" />
         <option value="$PROJECT_DIR$/state/state.go" />
-        <option value="$PROJECT_DIR$/../modules/proxy/sinceDB/sinceDB.go" />
         <option value="$PROJECT_DIR$/data/sinceDB" />
-        <option value="$PROJECT_DIR$/../plugins/client/sinceDB/sinceDB.go" />
         <option value="$PROJECT_DIR$/pipeline/pipeline.go" />
         <option value="$PROJECT_DIR$/source/errors.go" />
         <option value="$PROJECT_DIR$/source/source.go" />
         <option value="$PROJECT_DIR$/pipeline/errors.go" />
+        <option value="$PROJECT_DIR$/../modules/proxy/forward/worker/worker.go" />
+        <option value="$PROJECT_DIR$/../modules/proxy/forward/main.go" />
+        <option value="$PROJECT_DIR$/../plugins/pipeline/channel/channel.go" />
         <option value="$PROJECT_DIR$/hubble.yaml" />
+        <option value="$PROJECT_DIR$/../modules/proxy/sinceDB/sinceDB.go" />
+        <option value="$PROJECT_DIR$/../plugins/client/sinceDB/sinceDB.go" />
       </list>
     </option>
   </component>
@@ -241,12 +234,7 @@
             <path>
               <item name="hubble" type="b2602c69:ProjectViewProjectNode" />
               <item name="hubble" type="462c0819:PsiDirectoryNode" />
-              <item name="pipeline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hubble" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hubble" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hubble" type="b2602c69:ProjectViewProjectNode" />
@@ -397,7 +385,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882884" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="165" y="96" width="1101" height="572" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5375375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5375375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18908532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -427,22 +415,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/types/iterator.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/types/object.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/types/types.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -463,14 +435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../plugins/pipeline/channel/channel.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -745,14 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/sinceDB">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adapter/event.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -776,26 +732,6 @@
         <state relative-caret-position="108">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../plugins/client/sinceDB/sinceDB.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="e#17#550#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../modules/proxy/sinceDB/sinceDB.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="121" column="11" lean-forward="false" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="11" />
-          <folding>
-            <marker date="1510393871330" expanded="true" signature="2990:3248" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -851,10 +787,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../modules/proxy/forward/worker/worker.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="65" column="36" lean-forward="false" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../modules/proxy/forward/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="104" column="38" lean-forward="false" selection-start-line="104" selection-start-column="38" selection-end-line="104" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../plugins/pipeline/channel/channel.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="50" column="7" lean-forward="false" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
+          <folding>
+            <element signature="e#17#305#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hubble.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="75" column="20" lean-forward="false" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+        <state relative-caret-position="434">
+          <caret line="69" column="22" lean-forward="false" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../modules/proxy/sinceDB/sinceDB.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="118" column="16" lean-forward="false" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
+          <folding>
+            <element signature="e#17#485#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../plugins/client/sinceDB/sinceDB.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="64" column="8" lean-forward="false" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
+          <folding>
+            <element signature="e#17#494#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/sinceDB">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
           <folding />
         </state>
       </provider>

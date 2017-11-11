@@ -54,9 +54,6 @@ proxy:
                 - "10.21.21.82:9092"
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"
-            batch:
-                max: 1024
-                timeout: 10s
 
     - forward:
         pipeline.channel:
@@ -66,15 +63,11 @@ proxy:
                 - "10.21.21.82:9092"
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"
-            batch:
-                max: 1024
-                timeout: 10s
 
     - sinceDB:
         pipeline.channel:
             max: 512
-            timer: 2s
+            duration: 2s
         batch: 128
         client.sinceDB:
             file: "/home/go/src/github.com/rookie-xy/hubble/data/sinceDB"
-
