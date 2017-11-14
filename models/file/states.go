@@ -26,7 +26,7 @@ func (r *States) Update(state State) {
         r.States[index] = state
     } else {
         r.States = append(r.States, state)
-        fmt.Println("finder", "New models added for %s", state.Source)
+        fmt.Printf("New file added for %s\n", state.Source)
     }
 }
 
