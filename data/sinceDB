@@ -1,1 +1,0 @@
-[{"file":"/var/log/nginx_log/error.log","lno":4,"offset":204,"timestamp":"2017-11-14T19:41:01.572074913+08:00","ttl":-1,"type":"file"},{"file":"/var/log/redis_log/redis_client.log.bak","lno":8,"offset":440,"timestamp":"2017-11-14T19:41:01.572061094+08:00","ttl":-1,"type":"file"}]
