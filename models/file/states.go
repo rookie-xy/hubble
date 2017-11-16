@@ -17,46 +17,48 @@ func News() *States {
     }
 }
 
-func (r *States) Update(state State) {
-    r.Lock()
-    defer r.Unlock()
+func (s *States) Update(new State) {
+    s.Lock()
+    defer s.Unlock()
 
-    index, _ := r.findPrevious(state)
+    index, _ := s.findPrevious(new)
+    new.Timestamp = time.Now()
+
     if index >= 0 {
-        r.States[index] = state
+        s.States[index] = new
     } else {
-        r.States = append(r.States, state)
-        fmt.Printf("New file added for %s\n", state.Source)
+        s.States = append(s.States, new)
+        fmt.Printf("New file added for %s\n", new.Source)
     }
 }
 
-func (r *States) FindPrevious(newState State) State {
-    r.RLock()
-    defer r.RUnlock()
+func (s *States) FindPrevious(new State) State {
+    s.RLock()
+    defer s.RUnlock()
 
-    _, state := r.findPrevious(newState)
+    _, state := s.findPrevious(new)
     return state
 }
 
-func (s *States) findPrevious(newState State) (int, State) {
-    for index, oldState := range s.States {
-        if oldState.IsEqual(&newState) {
-            return index, oldState
+func (s *States) findPrevious(new State) (int, State) {
+    for index, old := range s.States {
+        if old.IsEqual(&new) {
+            return index, old
         }
     }
 
     return -1, State{}
 }
 
-func (r *States) Cleanup() int {
-    r.Lock()
-    defer r.Unlock()
+func (s *States) Cleanup() int {
+    s.Lock()
+    defer s.Unlock()
 
-    statesBefore := len(r.States)
+    statesBefore := len(s.States)
     currentTime := time.Now()
-    states := r.States[:0]
+    states := s.States[:0]
 
-    for _, state := range r.States {
+    for _, state := range s.States {
         expired := (state.TTL > 0 && currentTime.Sub(state.Timestamp) > state.TTL)
 
         if state.TTL == 0 || expired {
@@ -71,40 +73,40 @@ func (r *States) Cleanup() int {
         states = append(states, state) // in-place copy old models
     }
 
-    r.States = states
+    s.States = states
 
-    return statesBefore - len(r.States)
+    return statesBefore - len(s.States)
 }
 
 // Count returns number of states
-func (r *States) Count() int {
-    r.RLock()
-    defer r.RUnlock()
+func (s *States) Count() int {
+    s.RLock()
+    defer s.RUnlock()
 
-    return len(r.States)
+    return len(s.States)
 }
 
 // Returns a copy of the file states
-func (r *States) Get() []State {
-    r.RLock()
-    defer r.RUnlock()
+func (s *States) Get() []State {
+    s.RLock()
+    defer s.RUnlock()
 
-    newStates := make([]State, len(r.States))
-    copy(newStates, r.States)
+    new := make([]State, len(s.States))
+    copy(new, s.States)
 
-    return newStates
+    return new
 }
 
-func (r *States) Set(states []State) {
-    r.Lock()
-    defer r.Unlock()
+func (s *States) Set(states []State) {
+    s.Lock()
+    defer s.Unlock()
 
-    r.States = states
+    s.States = states
 }
 
-func (r *States) Copy() *States {
+func (s *States) Copy() *States {
     states := News()
-    states.States = r.Get()
+    states.States = s.Get()
 
     return states
 }

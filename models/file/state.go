@@ -6,10 +6,10 @@ import (
 )
 
 type State struct {
-    Id         string         `json:"-"`
+    Id         string         `json:"id"`
     Finished   bool           `json:"-"`
     Fileinfo   os.FileInfo    `json:"-"`
-    Source     string         `json:"file"`
+    Source     string         `json:"source"`
     Lno        uint64         `json:"lno"`
     Offset     int64          `json:"offset"`
     Timestamp  time.Time      `json:"timestamp"`
@@ -35,23 +35,25 @@ func (s *State) Init(id string, fi os.FileInfo, path, Type string) error {
 }
 
 // ID returns a unique id for the models as a string
-func (fs *State) ID() string {
+func (s *State) ID() string {
     // Generate id on first request. This is needed as id is
     // not set when converting back from json
-    if fs.Id == "" {
-        fs.Id = fs.Type
+    /*
+    if s.Id == "" {
+        s.Id = s.Type
     }
+    */
 
-    return fs.Id
+    return s.Id
 }
 
 // IsEqual compares the models to an other models supporing
 // stringer based on the unique string
-func (fs *State) IsEqual(new *State) bool {
-    return fs.ID() == new.ID()
+func (s *State) IsEqual(new *State) bool {
+    return s.ID() == new.ID()
 }
 
 // IsEmpty returns true if the models is empty
-func (fs *State) IsEmpty() bool {
-    return *fs == State{}
+func (s *State) IsEmpty() bool {
+    return *s == State{}
 }
