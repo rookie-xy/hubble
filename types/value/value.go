@@ -46,7 +46,6 @@ func (r *Value) GetUint64() (uint64, error) {
         return obj.(uint64), nil
     }
 
-    // TODO 修改错误信息
     return 0, fmt.Errorf("Not found object")
 }
 
@@ -76,9 +75,9 @@ func (r *Value) GetMap() map[interface{}]interface{} {
 
 func (r *Value) GetType() int {
 
-    if Value := r.Object; Value != nil {
+    if value := r.Object; value != nil {
 
-        switch Value.(type) {
+        switch value.(type) {
 
         case []interface{}:
             return types.ARRAY
@@ -94,7 +93,7 @@ func (r *Value) GetType() int {
         }
     }
 
-    return -1
+    return types.Unknown
 }
 
 func (r *Value) GetIterator(cfg types.Object) types.Iterator {
@@ -148,6 +147,5 @@ func (r *Value) GetDuration() (time.Duration, error) {
         }
     }
 
-    // TODO 修改错误信息
     return -1, fmt.Errorf("get duration object is nil")
 }

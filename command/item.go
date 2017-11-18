@@ -4,14 +4,14 @@ import (
     "github.com/rookie-xy/hubble/types"
 )
 
-type SetFunc func(cmd *Item, meta *Command, val types.Object) error
+type Set func(cmd *Item, meta *Command, val types.Object) error
 
 type Item struct {
     Command  *Command
     Type      int
     Scope     string
     Name      string
-    Set       SetFunc
+    Set       Set
     Load      types.Object
 }
 

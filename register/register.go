@@ -1,30 +1,13 @@
 package register
 
 import (
-    "sync"
     "github.com/rookie-xy/hubble/module"
     "github.com/rookie-xy/hubble/command"
+    "fmt"
 )
-
-// singleton
-type singleton struct {
-}
-
-var instance *singleton
-var once sync.Once
-
-func getInstance() *singleton {
-    once.Do(func() {
-        instance = &singleton{}
-    })
-
-    return instance
-}
 
 // flyweight
 func Module(scope, name string, items []command.Item, f module.Factory) {
-    merge := getInstance()
-
     key := ""
     if scope != key && name != key {
         key = scope + "." + name
@@ -33,27 +16,31 @@ func Module(scope, name string, items []command.Item, f module.Factory) {
         return
     }
 
-    if l := len(items); l <= 0 {
+    if length := len(items); length <= 0 {
+    	fmt.Printf("command items length is %d\n", length)
         return
     } else {
-        merge.Command(key, items)
+        commands(key, items)
     }
 
     if f != nil {
-        merge.Module(key, f)
+        if err := modules(key, f); err != nil {
+            fmt.Println(err)
+        }
     }
 }
 
-func (r *singleton) Command(key string, value []command.Item) {
-    for _, e := range value {
-        command.Pool = append(command.Pool, e)
+func commands(_ string, items []command.Item) {
+    for _, item := range items {
+        command.Pool = append(command.Pool, item)
     }
 }
 
-func (r *singleton) Module(key string, f module.Factory) {
-
+func modules(key string, f module.Factory) error {
     if _, exist := module.Pool[key]; !exist {
-        //fmt.Println("register: ", key)
         module.Pool[key] = &f
+        return nil
     }
+
+    return fmt.Errorf("The %s is exist", key)
 }

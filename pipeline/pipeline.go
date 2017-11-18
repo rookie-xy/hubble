@@ -10,13 +10,11 @@ import (
 type Factory func(log.Log, types.Value) (Queue, error)
 
 type Queue interface {
-    // prototype pattern
-    Clone() Queue
-    Close() int
-
     enqueue
     dequeue
     requeue
+
+    Close() int
 }
 
 type enqueue interface {

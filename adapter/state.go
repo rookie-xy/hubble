@@ -1,5 +1,5 @@
 package adapter
-
+/*
 import (
     "github.com/rookie-xy/hubble/state"
     "github.com/rookie-xy/hubble/event"
@@ -16,3 +16,4 @@ type FileStates interface {
     Insert() error
     Update(event event.Event) error
 }
+*/

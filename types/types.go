@@ -5,6 +5,7 @@ const (
     MAP
     STRING
     INTEGER
+    Unknown
 )
 
 type Map   map[interface{}]interface{}

@@ -9,12 +9,14 @@ import (
 )
 
 func Setup(flag, value string) error {
-    for _, item := range Pool {
+    if flag == "" || value == "" {
+        return fmt.Errorf("[command] flag or value is nil")
+    }
 
+    for _, item := range Pool {
         if item.Type != LINE || item.Command.flag != flag {
             continue
         }
-
         return item.Set(&item, item.Command, value)
     }
 

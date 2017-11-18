@@ -11,6 +11,7 @@ import (
     "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/input"
     "github.com/rookie-xy/hubble/output"
+    "github.com/rookie-xy/hubble/prototype"
 )
 
 // factory method
@@ -92,13 +93,13 @@ func Queue(name string) pipeline.Queue {
         key = name
     }
 
-    clone := pipeline.Queues[key]
-    if clone == nil {
-        fmt.Errorf("'%v' clone is not available", key)
+    queue := pipeline.Queues[key]
+    if queue == nil {
+        fmt.Errorf("'%v' queue is not available", key)
         return nil
     }
 
-    return clone.Clone()
+    return prototype.Pipeline(queue)
 }
 
 func Forward(name string) (proxy.Forward, error) {

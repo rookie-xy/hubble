@@ -5,11 +5,12 @@ import (
     "github.com/rookie-xy/hubble/types"
 )
 
-func Display(_ *Item, meta *Command, _ types.Object) error {
-    if meta != nil {
-        fmt.Println(meta.details)
+func Display(_ *Item, c *Command, _ types.Object) error {
+    if c != nil {
+        fmt.Println(c.details)
+        return nil
     }
 
-    return nil
+    return fmt.Errorf("Display: the command is nil")
 }
 

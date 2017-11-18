@@ -3,10 +3,11 @@ package file
 import (
 	"os"
 	"time"
+    "github.com/rookie-xy/modules/agents/file/id"
 )
 
 type State struct {
-    Id         string         `json:"id"`
+    fid        string         `json:"_"`
     Finished   bool           `json:"-"`
     Fileinfo   os.FileInfo    `json:"-"`
     Source     string         `json:"source"`
@@ -15,42 +16,40 @@ type State struct {
     Timestamp  time.Time      `json:"timestamp"`
     TTL        time.Duration  `json:"ttl"`
     Type       string         `json:"type"`
+    ID         ID
 }
 
 func New() State {
     return State{
-        Timestamp:  time.Now(),
         TTL:        -1,
         Type:       "file",
+        Finished:   false,
+        Timestamp:  time.Now(),
     }
 }
 
-func (s *State) Init(id string, fi os.FileInfo, path, Type string) error {
-	s.Id = id
-    s.Fileinfo = fi
+func (s *State) Init(path string, fi os.FileInfo) error {
     s.Source = path
-    s.Type = Type
-
+    s.Fileinfo = fi
+    s.ID = id.New(fi)
     return nil
 }
 
 // ID returns a unique id for the models as a string
-func (s *State) ID() string {
+func (s *State) Fid() string {
     // Generate id on first request. This is needed as id is
     // not set when converting back from json
-    /*
-    if s.Id == "" {
-        s.Id = s.Type
+    if s.fid == "" {
+        s.fid = s.ID.String()
     }
-    */
 
-    return s.Id
+    return s.fid
 }
 
 // IsEqual compares the models to an other models supporing
 // stringer based on the unique string
 func (s *State) IsEqual(new *State) bool {
-    return s.ID() == new.ID()
+    return s.Fid() == new.Fid()
 }
 
 // IsEmpty returns true if the models is empty

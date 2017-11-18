@@ -6,6 +6,10 @@ import (
 )
 
 func List(_ *Item, _ *Command, _ types.Object) error {
+	if length := len(Pool); length < 0 {
+	    return fmt.Errorf("The pool length is %d \n", length)
+    }
+
     for _, item := range Pool {
         if item.Type != LINE {
             continue
@@ -18,4 +22,3 @@ func List(_ *Item, _ *Command, _ types.Object) error {
 
     return nil
 }
-
