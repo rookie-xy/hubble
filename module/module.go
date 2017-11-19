@@ -31,6 +31,11 @@ func (r *module) Init() {
 }
 
 func (r *module) Main() {
+	if length := len(r.modules); length < 0 {
+	    fmt.Println("Not found module")
+	    return
+    }
+
     for _, module := range r.modules {
         if module != nil {
             go module.Main()
@@ -45,24 +50,14 @@ func (r *module) Main() {
 }
 
 func (r *module) Exit(code int) {
-        // 重新加载
-    /*
-    select {
-
-    case <- RELOAD:
-
-    case <- RECONFIGURE:
-
-    case <- EXIT:
-        for _, module := range r.children {
-            module.Exit()
+    if n := len(r.modules); n > 0 {
+        for _, module := range r.modules {
+            module.Exit(code)
         }
     }
-    */
 
-
-    for _, module := range r.modules {
-        module.Exit(code)
+    if code > 5 {
+    	r.configure.Exit(0)
     }
 }
 

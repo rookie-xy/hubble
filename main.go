@@ -60,12 +60,12 @@ func init() {
     argc, argv := len(os.Args), os.Args
     if argc <= 1 {
         command.Setup(help.GetFlag(), "")
-        exit(-1)
+        exit(nil,-1)
     }
 
     for i := 1; i < argc; i++ {
         if argv[i][0] != '-' {
-            exit(-1)
+            exit(nil,-1)
         }
 
         j := i
@@ -75,7 +75,7 @@ func init() {
 
         flag, value := argv[i], argv[j]
         if err := command.Setup(flag, value); err != nil {
-            exit(0)
+            exit(nil,0)
         }
 
         i++
@@ -98,7 +98,7 @@ func main() {
 
     director := builder.Directors(module)
     if director == nil {
-        exit(-1)
+        exit(module,-1)
     }
 
     director.Construct(core)
@@ -107,16 +107,16 @@ func main() {
 
     if value := check.GetValue(); value != nil {
         if value.GetBool() {
-            //TODO if module init exp, then notice
-            return
+            exit(module, -1)
         }
     }
 
     module.Main()
-
-    module.Exit(-1)
 }
 
-func exit(code int) {
+func exit(module module.Template, code int) {
+    if module != nil {
+        module.Exit(code)
+    }
     os.Exit(code)
 }
