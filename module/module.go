@@ -44,6 +44,7 @@ func (r *module) Main() {
 
     for {
         select {
+        // 只跟操作系统打交到
 
         }
     }
@@ -56,9 +57,7 @@ func (r *module) Exit(code int) {
         }
     }
 
-    if code > 5 {
-    	r.configure.Exit(0)
-    }
+    r.configure.Exit(0)
 }
 
 func (r *module) Load(module Template) {
@@ -78,9 +77,13 @@ func (r *module) Configure(cfg Template) error {
     r.configure.Init()
 
     if subject := factory.Subject(memento.Name); subject != nil {
-	       if obs := factory.Observer(Configure); obs != nil {
+        if obs := factory.Observer(Configure); obs != nil {
             subject.Attach(obs)
+        } else {
+            return  fmt.Errorf("Not found configure observer")
         }
+    } else {
+        return fmt.Errorf("Not found configure subject")
     }
 
     go r.configure.Main()
