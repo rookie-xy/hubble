@@ -3,6 +3,7 @@ package adapter
 import (
 	"github.com/rookie-xy/hubble/observer"
 	"github.com/rookie-xy/hubble/module"
+	"github.com/rookie-xy/hubble/types"
 )
 
 type ConfigureObserver interface {
