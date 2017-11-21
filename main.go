@@ -10,6 +10,8 @@ import (
     "github.com/rookie-xy/hubble/builder"
 
   _ "github.com/rookie-xy/modules"
+    "syscall"
+    "os/signal"
 )
 
 var (
@@ -94,6 +96,9 @@ func main() {
         module.Agents,
     }
 
+    signalChan := make(chan os.Signal, 1)
+    signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
+
     module := module.New(log)
 
     director := builder.Directors(module)
@@ -112,6 +117,8 @@ func main() {
     }
 
     module.Main()
+    <-signalChan
+    module.Exit(0)
 }
 
 func exit(module module.Template, code int) {

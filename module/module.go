@@ -7,13 +7,17 @@ import (
     "fmt"
 )
 
-//type NewFunc func(log log.Log) Template
-
 // facade
 type module struct {
     log.Log
-    configure Template
-    modules   []Template
+
+    configure  Template
+    modules    []Template
+
+    mains      []func()
+    exits      []func(int)
+
+    done       chan struct{}
 }
 
 func New(log log.Log) *module {
@@ -23,41 +27,55 @@ func New(log log.Log) *module {
 }
 
 func (r *module) Init() {
-    for _, module := range r.modules {
-        if module != nil {
-            module.Init()
+    if length := len(r.modules); length > 0 {
+        for i, module := range r.modules {
+            if module != nil {
+                module.Init()
+
+                r.mains = append(r.mains, module.Main)
+                r.exits = append(r.exits, module.Exit)
+            } else {
+                fmt.Println("module is nil")
+                if i > 0 {
+                    r.Exit(0)
+                }
+                return
+            }
         }
     }
+
+    fmt.Println("Not found module")
 }
 
 func (r *module) Main() {
-	if length := len(r.modules); length < 0 {
+    if length := len(r.mains); length > 0 {
+        for _, main := range r.mains {
+            go main()
+        }
+
+    } else {
 	    fmt.Println("Not found module")
 	    return
-    }
-
-    for _, module := range r.modules {
-        if module != nil {
-            go module.Main()
-        }
     }
 
     for {
         select {
         // 只跟操作系统打交到
-
+        case <- r.done:
+            return
         }
     }
 }
 
 func (r *module) Exit(code int) {
-    if n := len(r.modules); n > 0 {
-        for _, module := range r.modules {
-            module.Exit(code)
+    if n := len(r.exits); n > 0 {
+        for _, exit := range r.exits {
+            exit(code)
         }
     }
 
     r.configure.Exit(0)
+    close(r.done)
 }
 
 func (r *module) Load(module Template) {

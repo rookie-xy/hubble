@@ -43,7 +43,7 @@ func (r *Configure) Notify(o types.Object) {
 
 func (r *Configure) Reload(o types.Object) {
     for _, observer := range r.observers {
-        configure := adapter.ConfigureObserver(observer)
+        configure := adapter.ToConfigureObserver(observer)
         if configure.Reload(o) != nil {
             break
         }
