@@ -8,14 +8,14 @@ agents:
         #expire: 20
         input.log:
             inactive: 12s
-            timeout: 10s
+            timeout: 16s
             removed: false
             renamed: false
             eof: false
             backoff:
-                min: 3s
-                max: 18s
-                factor: 37
+                min: 12s
+                max: 20s
+                factor: 30
         codec.line:
             match: "\n"
             max: 16382
