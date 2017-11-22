@@ -42,9 +42,10 @@ func (r *module) Init() {
                 return
             }
         }
-    }
 
-    fmt.Println("Not found module")
+    } else {
+        fmt.Println("Not found module")
+    }
 }
 
 func (r *module) Main() {

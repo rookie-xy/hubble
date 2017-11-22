@@ -3,7 +3,6 @@ package file
 import (
 	"os"
 	"time"
-    "github.com/rookie-xy/modules/agents/file/id"
 )
 
 type State struct {
@@ -31,7 +30,7 @@ func New() State {
 func (s *State) Init(path string, fi os.FileInfo) error {
     s.Source = path
     s.Fileinfo = fi
-    s.ID = id.New(fi)
+    s.ID = Id(fi)
     return nil
 }
 

@@ -3,8 +3,8 @@ agents:
         group: "nginx"
         type: "nginx_log"
         paths:
-            #- "/var/log/nginx_log/*"
-            - "/Users/mengshi/go/src/github.com/rookie-xy/hubble/nginx/*"
+            - "/var/log/nginx_log/*"
+            #- "/Users/mengshi/go/src/github.com/rookie-xy/hubble/nginx/*"
         #expire: 20
         input.log:
             inactive: 12s
@@ -27,8 +27,9 @@ agents:
         group: "redis"
         type: "redis_log"
         paths:
-            #- "/var/log/redis_log/*"
-            - "/Users/mengshi/go/src/github.com/rookie-xy/hubble/redis/*"
+            - "/var/log/redis_log/*"
+            #- "/var/log/sys_log/*"
+            #- "/Users/mengshi/go/src/github.com/rookie-xy/hubble/redis/*"
         input.log:
             inactive: 12s
             timeout: 10s
