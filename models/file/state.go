@@ -7,7 +7,7 @@ import (
 )
 
 type State struct {
-    fid        string         `json:"_"`
+    fid        string         `json:"-"`
     Finished   bool           `json:"-"`
     Fileinfo   os.FileInfo    `json:"-"`
     Source     string         `json:"source"`
