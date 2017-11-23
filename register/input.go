@@ -12,7 +12,8 @@ func Input(name string, f input.Factory) {
     }
 
     if _, exists := input.Inputs[name]; exists {
-        panic(fmt.Sprintf("input '%v' already registered ", name))
+        fmt.Printf("This input '%v' already registered\n", name)
+        return
     }
 
     input.Inputs[name] = f

@@ -7,7 +7,8 @@ import (
 
 func Observer(name string, o observer.Observer) {
     if _, exists := observer.Observers[name]; exists {
-        panic(fmt.Sprintf("this observer '%v' already registered ", name))
+        fmt.Printf("This observer '%v' already registered\n", name)
+        return
     }
 
     observer.Observers[name] = o
@@ -15,7 +16,8 @@ func Observer(name string, o observer.Observer) {
 
 func Subject(name string, o observer.Subject) {
     if _, exists := observer.Subjects[name]; exists {
-        panic(fmt.Sprintf("this subject '%v' already registered ", name))
+        fmt.Printf("This subject '%v' already registered\n", name)
+        return
     }
 
     observer.Subjects[name] = o

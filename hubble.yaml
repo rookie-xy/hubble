@@ -3,7 +3,7 @@ agents:
         group: "nginx"
         type: "nginx_log"
         paths:
-            - "/var/log/nginx_log/*"
+            - "/var/log/nginxlllllllllllllll_log/*"
             #- "/Users/mengshi/go/src/github.com/rookie-xy/hubble/nginx/*"
         #expire: 20
         input.log:
@@ -13,9 +13,9 @@ agents:
             renamed: false
             eof: false
             backoff:
-                min: 12s
-                max: 20s
-                factor: 30
+                min: 14s
+                max: 10s
+                factor: 11
         codec.line:
             match: "\n"
             max: 16382
@@ -27,7 +27,7 @@ agents:
         group: "redis"
         type: "redis_log"
         paths:
-            - "/var/log/redis_log/*"
+            - "/var/log/redisuuuuuuuuuuuuuuuuulog/*"
             #- "/var/log/sys_log/*"
             #- "/Users/mengshi/go/src/github.com/rookie-xy/hubble/redis/*"
         input.log:

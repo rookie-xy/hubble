@@ -12,7 +12,8 @@ func Filter(name string, f filter.Factory) {
     }
 
     if _, exists := filter.Filters[name]; exists {
-        panic(fmt.Sprintf("this filter '%v' already registered ", name))
+        fmt.Printf("This filter '%v' already registered\n", name)
+        return
     }
 
     filter.Filters[name] = f

@@ -13,20 +13,22 @@ func Client(name string, c proxy.Client) {
     }
 
     if _, exists := proxy.Clients[name]; exists {
-        panic(fmt.Sprintf("client '%v' already registered ", name))
+        fmt.Printf("This client '%v' already registered\n", name)
+        return
     }
 
     proxy.Clients[name] = c
 }
 
-func Forword(name string, F proxy.Forward) {
+func Forword(name string, f proxy.Forward) {
     if name == "" {
         return
     }
 
     if _, exists := proxy.Forwards[name]; exists {
-        panic(fmt.Sprintf("this pipeline clone name '%v' already registered ", name))
+        fmt.Printf("This forword object '%v' already registered\n", name)
+        return
     }
 
-    proxy.Forwards[name] = F
+    proxy.Forwards[name] = f
 }

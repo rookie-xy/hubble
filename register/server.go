@@ -11,7 +11,8 @@ func Server(name string, s proxy.Server) {
     }
 
     if _, exists := proxy.Reverses[name]; exists {
-        panic(fmt.Sprintf("client '%v' already registered ", name))
+        fmt.Printf("This server '%v' already registered\n", name)
+        return
     }
 
     proxy.Reverses[name] = s

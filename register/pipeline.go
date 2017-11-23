@@ -11,7 +11,8 @@ func Pipeline(name string, f pipeline.Factory) {
     }
 
     if _, exists := pipeline.Factories[name]; exists {
-        panic(fmt.Sprintf("this pipeline '%v' already registered ", name))
+        fmt.Printf("This pipeline '%v' already registered\n", name)
+        return
     }
 
     pipeline.Factories[name] = f
@@ -23,7 +24,8 @@ func Queue(name string, Q pipeline.Queue) {
     }
 
     if _, exists := pipeline.Queues[name]; exists {
-        panic(fmt.Sprintf("this pipeline clone name '%v' already registered ", name))
+        fmt.Printf("This pipeline object '%v' already registered\n", name)
+        return
     }
 
     pipeline.Queues[name] = Q

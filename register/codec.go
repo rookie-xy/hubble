@@ -13,7 +13,8 @@ func Codec(name string, f codec.Factory) {
     }
 
     if _, exists := codec.Codecs[name]; exists {
-        panic(fmt.Sprintf("codec '%v' already registered ", name))
+        fmt.Printf("This codec '%v' already registered\n", name)
+        return
     }
 
     codec.Codecs[name] = f

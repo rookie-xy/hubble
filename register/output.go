@@ -12,7 +12,8 @@ func Output(name string, o output.Factory) {
     }
 
     if _, exists := output.Outputs[name]; exists {
-        panic(fmt.Sprintf("output '%v' already registered ", name))
+        fmt.Printf("This output '%v' already registered\n", name)
+        return
     }
 
     output.Outputs[name] = o
