@@ -20,13 +20,14 @@ func Pipeline(name string, f pipeline.Factory) {
 
 func Queue(name string, Q pipeline.Queue) {
     if name == "" {
+        fmt.Printf("Name is nil")
         return
     }
-
+    /*
     if _, exists := pipeline.Queues[name]; exists {
         fmt.Printf("This pipeline object '%v' already registered\n", name)
         return
     }
-
+    */
     pipeline.Queues[name] = Q
 }

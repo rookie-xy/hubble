@@ -24,11 +24,12 @@ func Forword(name string, f proxy.Forward) {
     if name == "" {
         return
     }
-
+    /*
     if _, exists := proxy.Forwards[name]; exists {
         fmt.Printf("This forword object '%v' already registered\n", name)
         return
     }
+    */
 
     proxy.Forwards[name] = f
 }

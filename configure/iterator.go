@@ -42,7 +42,6 @@ func (r *Configure) Notify(o types.Object) {
 }
 
 func (r *Configure) Reload(o types.Object) {
-	fmt.Println("Mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmain configure number ", len(r.observers))
     for _, observer := range r.observers {
         configure := adapter.ToConfigureObserver(observer)
         if configure.Reload(o) != nil {
