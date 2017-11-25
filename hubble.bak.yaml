@@ -1,0 +1,77 @@
+agents:
+    - file:
+        group: "nginx"
+        type: "nginx_log"
+        paths:
+            #- "/var/log/nginx_log/*"
+            #- "/var/log/sys_log/*"
+            - "/Users/mengshi/go/src/github.com/rookie-xy/hubble/nginx/*"
+        #expire: 20
+        input.log:
+            inactive: 12s
+            timeout: 13s
+            removed: false
+            renamed: false
+            eof: false
+            backoff:
+                min: 14s
+                max: 16s
+                factor: 15
+        codec.line:
+            match: "\n"
+            max: 16382
+        output.elasticsearch:
+            pipeline.channel:
+                max: 1024
+
+    - file:
+        group: "redis"
+        type: "redis_log"
+        paths:
+            #- "/var/log/redis_log/*"
+            #- "/var/log/sys_log/*"
+            - "/Users/mengshi/go/src/github.com/rookie-xy/hubble/redis/*"
+        input.log:
+            inactive: 12s
+            timeout: 13s
+            removed: false
+            renamed: false
+            eof: false
+            backoff:
+                min: 3s
+                max: 18s
+                factor: 37
+        codec.line:
+            match: "\n"
+            max: 16382
+        output.kafka:
+            pipeline.channel:
+                max: 1024
+
+proxy:
+    - forward:
+        pipeline.channel:
+            max: 1024
+        client.elasticsearch:
+            cluster:
+                - "10.21.21.82:9092"
+                - "10.21.21.83:9092"
+                - "10.21.21.84:9092"
+
+    - forward:
+        pipeline.channel:
+            max: 1024
+        client.kafka:
+            broker:
+                - "10.21.21.82:9092"
+                - "10.21.21.83:9092"
+                - "10.21.21.84:9092"
+
+    - sinceDB:
+        pipeline.channel:
+            max: 512
+            duration: 2s
+        batch: 128
+        client.sinceDB:
+            #file: "/home/go/src/github.com/rookie-xy/hubble/data/sinceDB"
+            file: "/Users/mengshi/go/src/github.com/rookie-xy/hubble/data/sinceDB"

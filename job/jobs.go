@@ -62,9 +62,9 @@ func (r *Jobs) WaitForCompletion() {
     r.wg.Wait()
 }
 
-// Start starts the given harvester and add its to the registry
+// Start starts the given collector and add its to the registry
 func (r *Jobs) Start(j Job) {
-    // Make sure stop is not called during starting a harvester
+    // Make sure stop is not called during starting a collector
     r.Lock()
     defer r.Unlock()
 
@@ -82,11 +82,11 @@ func (r *Jobs) Start(j Job) {
 
         r.add(j)
 
-        // Starts harvester and picks the right type. In case
+        // Starts collector and picks the right type. In case
         // type is not set, set it to default (log)
         err := j.Run()
         if err != nil {
-            //r.log.Print("Error running prospector: %v", err)
+            //r.log.Print("Error running finder: %v", err)
             fmt.Printf("Error running colector: %v\n", err)
         }
     }()
@@ -102,10 +102,8 @@ func (r *Jobs) Len() uint64 {
 
 func (r *Jobs) active() bool {
     select {
-
     case <-r.done:
         return false
-
     default:
         return true
     }
