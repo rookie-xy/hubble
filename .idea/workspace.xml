@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f78f622-c869-4fa1-bb51-e77e96ccd0b2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/data/sinceDB" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hubble.yaml" afterPath="$PROJECT_DIR$/hubble.yaml" />
-      <change beforePath="$PROJECT_DIR$/job/jobs.go" afterPath="$PROJECT_DIR$/job/jobs.go" />
-      <change beforePath="$PROJECT_DIR$/nginx/access.log" afterPath="$PROJECT_DIR$/nginx/access.log" />
-      <change beforePath="$PROJECT_DIR$/nginx/error.log" afterPath="$PROJECT_DIR$/nginx/error.log" />
-    </list>
+    <list default="true" id="8f78f622-c869-4fa1-bb51-e77e96ccd0b2" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
