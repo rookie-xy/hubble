@@ -13,15 +13,21 @@ type Director struct {
     build Builder
 }
 
-func Directors(b Builder) *Director {
-    return &Director{build: b}
+func New(log log.Log) *Director {
+    return &Director{Log: log}
 }
 
-func (r *Director) Construct(core []string) {
+func (d *Director) Director(b Builder) error /**Director*/ {
+    //return &Director{build: b}
+    d.build = b
+    return nil
+}
+
+func (d *Director) Construct(core []string) {
     scope := module.Worker
     key   := scope + "." + module.Configure
 
-    configure := module.Setup(key, r.Log)
+    configure := module.Setup(key, d.Log)
     if configure == nil {
         fmt.Println("Not found configure module")
         return
@@ -31,8 +37,8 @@ func (r *Director) Construct(core []string) {
     if subject != nil {
         for _, name := range core {
             key := scope + "." + name
-            if module := module.Setup(key, r.Log); module != nil {
-                r.build.Load(module)
+            if module := module.Setup(key, d.Log); module != nil {
+                d.build.Load(module)
             }
 
             if f := factory.Observer(name); f != nil {
@@ -45,5 +51,5 @@ func (r *Director) Construct(core []string) {
         return
     }
 
-    r.build.Configure(configure)
+    d.build.Configure(configure)
 }

@@ -2,6 +2,8 @@ package main
 
 import (
     "os"
+    "os/signal"
+    "syscall"
 
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/paths"
@@ -10,16 +12,15 @@ import (
     "github.com/rookie-xy/hubble/builder"
 
   _ "github.com/rookie-xy/modules"
-    "syscall"
-    "os/signal"
 )
 
 var (
-    version = command.New("-v", "version", "0.0.1",    "Display engine version, golang version, " +
+    version = command.New("-v", "version",  "0.0.1",   "Display engine version, golang version, " +
                                                                             "system architecture and other information"    )
     help    = command.New("-?",  "help",    "",        "Assist information on how to use the system"  )
-    check   = command.New("-cc", "check",  false,      "Pre check before system startup"              )
-    home    = command.New("-h",  "home",   paths.Home(),     "Program root path"                           )
+    check   = command.New("-cc", "check",   false,     "Pre check before system startup"              )
+    verbose = command.New("-V", "verbose",  true,     "output detail info"                            )
+    home    = command.New("-h",  "home",     paths.Home(),    "Program root path"                           )
 )
 
 var commands = []command.Item{
@@ -39,6 +40,13 @@ var commands = []command.Item{
       nil },
 
     { check,
+      command.LINE,
+      module.Worker,
+      "main",
+      command.SetObject,
+      nil },
+
+    { verbose,
       command.LINE,
       module.Worker,
       "main",
@@ -101,12 +109,12 @@ func main() {
 
     module := module.New(log)
 
-    director := builder.Directors(module)
-    if director == nil {
+    builder := builder.New(log)
+    if err := builder.Director(module); err != nil {
         exit(-1)
-    }
+	}
 
-    director.Construct(core)
+    builder.Construct(core)
 
     module.Init()
 

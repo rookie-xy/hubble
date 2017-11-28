@@ -1,40 +1,27 @@
 package log
 
-import "github.com/rookie-xy/hubble/types"
+type Factory func(l Level, f string, args ...interface{})
 
-//Decorator
 type Log interface {
-    Print(a types.Object)
+    Output(maxDepth int, s string) error
 }
 
 type log struct {
-    name string
+ 	Level    string  `flag:"log-level"`
+	Verbose  bool    `flag:"verbose"`   // for backwards compatibility
+	Log      Log
+
+	// private, not really an option
+	level    Level
 }
 
 func New() *log {
     return &log{}
 }
-
-func (r *log) Print(a types.Object) {
-    return
-}
 /*
-type Component interface {
-	Operation() string
-}
+type Nil struct{}
 
-type ConcreteComponent struct {
-}
-
-func (self *ConcreteComponent) Operation() string {
-	return "I am component!"
-}
-
-type ConcreteDecorator struct {
-	component Component
-}
-
-func (self *ConcreteDecorator) Operation() string {
-	return "<strong>" + self.component.Operation() + "</strong>"
+func (l Nil) Output(maxDepth int, s string) error {
+    return nil
 }
 */
