@@ -1,27 +1,54 @@
 package log
 
+import (
+    "os"
+    "log"
+
+	"github.com/rookie-xy/hubble/types"
+  . "github.com/rookie-xy/hubble/log/level"
+)
+
 type Factory func(l Level, f string, args ...interface{})
 
 type Log interface {
-    Output(maxDepth int, s string) error
+    Output(depth int, s string) error
 }
 
-type log struct {
- 	Level    string  `flag:"log-level"`
-	Verbose  bool    `flag:"verbose"`   // for backwards compatibility
-	Log      Log
+type logs struct {
+   *log.Logger
 
-	// private, not really an option
+	Log      Log
 	level    Level
 }
 
-func New() *log {
-    return &log{}
-}
-/*
-type Nil struct{}
+func New() *logs {
+	prefix := prefix.GetValue()
+	verbose := verbose.GetValue()
+	level := level.GetValue()
 
-func (l Nil) Output(maxDepth int, s string) error {
-    return nil
+	this := &logs{
+		Log: log.New(
+	        os.Stderr,
+	        prefix.GetString(),
+            log.LstdFlags | log.Lmicroseconds,
+        ),
+        level: INFO,
+    }
+
+    var err error
+    this.level, err = Parse(level.GetString(), verbose.GetBool())
+    if err != nil {
+        return nil
+	}
+
+    return this
 }
-*/
+
+func (l *logs) Init(prefix, verbose, level  types.Value) error {
+	//prefix.GetString()
+	return nil
+}
+
+func (l *logs) Level() Level {
+    return l.level
+}

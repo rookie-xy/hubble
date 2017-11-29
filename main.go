@@ -11,7 +11,7 @@ import (
     "github.com/rookie-xy/hubble/command"
     "github.com/rookie-xy/hubble/builder"
 
-  _ "github.com/rookie-xy/modules"
+  //_ "github.com/rookie-xy/modules"
 )
 
 var (
@@ -19,8 +19,11 @@ var (
                                                                             "system architecture and other information"    )
     help    = command.New("-?",  "help",    "",        "Assist information on how to use the system"  )
     check   = command.New("-cc", "check",   false,     "Pre check before system startup"              )
-    verbose = command.New("-V", "verbose",  true,     "output detail info"                            )
     home    = command.New("-h",  "home",     paths.Home(),    "Program root path"                           )
+
+    verbose = command.New("-V", "verbose", true,       "output detail info")
+    level   = command.New("-l", "level",   "info",     "output detail info")
+    prefix  = command.New("-p", "prefix",  "[hubble]", "output detail info")
 )
 
 var commands = []command.Item{
@@ -28,35 +31,49 @@ var commands = []command.Item{
     { version,
       command.LINE,
       module.Worker,
-      "main",
+      Name,
       command.Display,
       nil },
 
     { help,
       command.LINE,
       module.Worker,
-      "main",
+      Name,
       command.List,
       nil },
 
     { check,
       command.LINE,
       module.Worker,
-      "main",
-      command.SetObject,
-      nil },
-
-    { verbose,
-      command.LINE,
-      module.Worker,
-      "main",
+      Name,
       command.SetObject,
       nil },
 
     { home,
       command.LINE,
       module.Worker,
-      "main",
+      Name,
+      command.SetObject,
+      nil },
+
+    { verbose,
+      command.LINE,
+      module.Worker,
+      Name,
+      command.SetObject,
+      nil },
+
+    { level,
+      command.LINE,
+      module.Worker,
+      Name,
+      command.SetObject,
+      nil },
+
+    { prefix,
+      command.LINE,
+      module.Worker,
+      Name,
       command.SetObject,
       nil },
 
@@ -94,13 +111,17 @@ func init() {
 
 func main() {
     log := log.New()
+    if err := log.Init(prefix.GetValue(), verbose.GetValue(),
+                       level.GetValue()); err != nil {
+        exit(1)
+    }
 
     if value := home.GetValue(); value != nil {
         paths.Init(value)
     }
 
     core := []string{
-        module.Proxy,
+        module.Proxys,
         module.Agents,
     }
 

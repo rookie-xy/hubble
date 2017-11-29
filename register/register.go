@@ -20,27 +20,12 @@ func Module(scope, name string, items []command.Item, f module.Factory) {
     	fmt.Printf("command items length is %d\n", length)
         return
     } else {
-        commands(key, items)
+        Commands(key, items)
     }
 
     if f != nil {
-        if err := modules(key, f); err != nil {
+        if err := Modules(key, f); err != nil {
             fmt.Println(err)
         }
     }
-}
-
-func commands(_ string, items []command.Item) {
-    for _, item := range items {
-        command.Pool = append(command.Pool, item)
-    }
-}
-
-func modules(key string, f module.Factory) error {
-    if _, exist := module.Pool[key]; !exist {
-        module.Pool[key] = &f
-        return nil
-    }
-
-    return fmt.Errorf("The %s is exist", key)
 }

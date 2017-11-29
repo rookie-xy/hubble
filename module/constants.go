@@ -6,5 +6,5 @@ const (
     Configure = "configure"
     Plugins = "plugins"
     Agents = "agents"
-    Proxy = "proxy"
+    Proxys = "proxy"
 )

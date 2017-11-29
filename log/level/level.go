@@ -1,26 +1,18 @@
-package log
+package level
 
 type Level int
 
-const (
-	DEBUG = Level(1)
-	INFO  = Level(2)
-	WARN  = Level(3)
-	ERROR = Level(4)
-	FATAL = Level(5)
-)
-
 func (l Level) String() string {
 	switch l {
-	case 1:
+	case DEBUG:
 		return "DEBUG"
-	case 2:
+	case INFO:
 		return "INFO"
-	case 3:
+	case WARN:
 		return "WARNING"
-	case 4:
+	case ERROR:
 		return "ERROR"
-	case 5:
+	case FATAL:
 		return "FATAL"
 	}
 	panic("invalid Level")

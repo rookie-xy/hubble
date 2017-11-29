@@ -3,34 +3,38 @@ package log
 import (
 	"strings"
 	"fmt"
+  . "github.com/rookie-xy/hubble/log/level"
 )
 
 func Parse(level string, verbose bool) (Level, error) {
-	lvl := INFO
+	this := INFO
 
 	switch strings.ToLower(level) {
 	case "debug":
-		lvl = DEBUG
+        this = DEBUG
 	case "info":
-		lvl = INFO
+        this = INFO
 	case "warn":
-		lvl = WARN
+        this = WARN
 	case "error":
-		lvl = ERROR
+        this = ERROR
 	case "fatal":
-		lvl = FATAL
+        this = FATAL
 	default:
-		return lvl, fmt.Errorf("invalid log-level '%s'", level)
+        return this, fmt.Errorf("invalid log level '%s'", level)
 	}
+
 	if verbose {
-		lvl = DEBUG
+		this = DEBUG
 	}
-	return lvl, nil
+
+	return this, nil
 }
 
-func Logf(logger Logger, cfg Level, msg Level, f string, args ...interface{}) {
-	if cfg > msg {
-		return
-	}
-	logger.Output(3, fmt.Sprintf(msg.String()+": "+f, args...))
+func Print(log Log, this Level, level Level, f string, args ...interface{}) {
+    if this > level {
+        return
+    }
+
+	log.Output(3, fmt.Sprintf(level.String()+": "+f, args...))
 }
