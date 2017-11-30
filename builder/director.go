@@ -1,12 +1,11 @@
 package builder
 
 import (
-    "fmt"
-
-    "github.com/rookie-xy/hubble/module"
-    "github.com/rookie-xy/hubble/log"
-    "github.com/rookie-xy/hubble/factory"
     "errors"
+
+    "github.com/rookie-xy/hubble/log"
+    "github.com/rookie-xy/hubble/module"
+    "github.com/rookie-xy/hubble/factory"
 )
 
 type Director struct {
@@ -24,17 +23,16 @@ func (d *Director) Director(b Builder) error /**Director*/ {
         return nil
     }
 
-    return errors.New("Director failure")
+    return errors.New("director failure")
 }
 
-func (d *Director) Construct(core []string) {
+func (d *Director) Construct(core []string) error {
     scope := module.Worker
     key   := scope + "." + module.Configure
 
     configure := module.Setup(key, d.Logger)
     if configure == nil {
-        fmt.Println("Not found configure module")
-        return
+        return errors.New("not found configure module")
     }
 
     subject := factory.Subject(module.Configure)
@@ -51,10 +49,9 @@ func (d *Director) Construct(core []string) {
         }
 
     } else {
-        fmt.Println("Not found configure subject")
-        return
+        return errors.New("not found configure subject")
     }
 
     d.build.Configure(configure)
+    return nil
 }
-

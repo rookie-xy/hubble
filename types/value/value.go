@@ -50,10 +50,21 @@ func (r *Value) GetUint64() (uint64, error) {
 }
 
 func (r *Value) GetBool() bool {
+    if t := r.GetType(); t != types.Unknown {
+        switch t {
+        case types.STRING:
+            s := r.GetString()
+            if s != "true" {
+                return false
+            }
+            return true
+        }
+    }
+    /*
     if obj := r.Object; obj != nil {
         return obj.(bool)
     }
-
+    */
     return false
 }
 

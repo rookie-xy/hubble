@@ -15,8 +15,6 @@ type Log interface {
 
 type Logger struct {
    *log.Logger
-
-//	Log    Log
 	level  Level
 }
 
@@ -39,6 +37,10 @@ func (l *Logger) Set(ll Level) {
 
 func (l *Logger) Get() Level {
     return l.level
+}
+
+func (l *Logger) Copy(logger *Logger) {
+	l = logger
 }
 
 func (l *Logger) Print(ll Level, f string, args ...interface{}) {

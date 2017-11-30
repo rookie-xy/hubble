@@ -1,9 +1,3 @@
-system:
-    log:
-        level: "info"
-        path: "var/logs/hubble.log"
-
-
 agents:
     - file:
         group: "nginx"

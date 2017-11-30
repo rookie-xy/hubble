@@ -4,6 +4,7 @@ import (
     "os"
     "os/signal"
     "syscall"
+    "fmt"
 
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/paths"
@@ -13,7 +14,6 @@ import (
     "github.com/rookie-xy/hubble/log/level"
 
   _ "github.com/rookie-xy/modules"
-    "fmt"
 )
 
 var (
@@ -94,7 +94,7 @@ func main() {
     if value := home.GetValue(); value != nil {
         paths.Init(value)
     } else {
-        log.Print(level.INFO, "Not found paths")
+        log.Print(level.INFO, "not found home paths")
     }
 
     component:= []string{
@@ -109,9 +109,14 @@ func main() {
 
     builder := builder.New(log)
     if err := builder.Director(module); err != nil {
-        exit(-1)
+        log.Print(level.FATAL, err.Error())
+        exit(0)
 	}
-    builder.Construct(component)
+
+    if err := builder.Construct(component); err != nil {
+        log.Print(level.FATAL, err.Error())
+        exit(0)
+    }
 
     module.Init()
 

@@ -8,6 +8,7 @@ import (
 type LevelLog interface {
 	log.Log
 	Get() level.Level
+	Copy(logger *log.Logger)
 }
 
 func ToLevelLog(log log.Log) LevelLog {
