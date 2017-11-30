@@ -6,21 +6,31 @@ import (
     "github.com/rookie-xy/hubble/types"
     "github.com/rookie-xy/hubble/plugin"
     "fmt"
+    "errors"
 )
 
-func Setup(flag, value string) error {
+func Line(flag, value string) error {
     if flag == "" || value == "" {
         return fmt.Errorf("[command] flag or value is nil")
     }
 
     for _, item := range Pool {
+        /*
         if item.Type != LINE || item.Command.flag != flag {
+            continue
+        }
+        */
+        if item.Type != LINE {
+            continue
+        }
+
+        if item.Command.flag != flag {
             continue
         }
         return item.Set(&item, item.Command, value)
     }
 
-    return nil
+    return errors.New("command is not exist")
 }
 
 func File(scope, name, key string, value types.Object) error {

@@ -5,11 +5,13 @@ import (
     "github.com/rookie-xy/hubble/factory"
     "github.com/rookie-xy/hubble/memento"
     "fmt"
+    "github.com/rookie-xy/hubble/log/level"
+    "os"
 )
 
 // facade
 type module struct {
-    log.Log
+   *log.Logger
 
     configure  Template
     modules    []Template
@@ -20,48 +22,46 @@ type module struct {
     done       chan struct{}
 }
 
-func New(log log.Log) *module {
+func New(l *log.Logger) *module {
     return &module{
-        Log: log,
+        Logger: l,
     }
 }
 
 func (r *module) Init() {
-    if length := len(r.modules); length > 0 {
-        for i, module := range r.modules {
+    if n := len(r.modules); n > 0 {
+        for _, module := range r.modules {
             if module != nil {
                 module.Init()
 
                 r.mains = append(r.mains, module.Main)
                 r.exits = append(r.exits, module.Exit)
-            } else {
-                fmt.Println("module is nil")
-                if i > 0 {
-                    r.Exit(0)
-                }
-                return
+
+                continue
             }
+
+            r.Print(level.WARN, "module is nil")
         }
 
     } else {
-        fmt.Println("Not found module")
+        r.Print(level.WARN, "Not found module")
     }
 }
 
 func (r *module) Main() {
-    if length := len(r.mains); length > 0 {
+    if n := len(r.mains); n > 0 {
         for _, main := range r.mains {
             go main()
         }
 
     } else {
-	    fmt.Println("Not found module")
-	    return
+	    r.Print(level.WARN,"Not found module")
+	    os.Exit(1)
     }
 
     for {
         select {
-        // 只跟操作系统打交到
+        // just hand in with the operating system
         case <- r.done:
             return
         }

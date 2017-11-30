@@ -10,8 +10,10 @@ import (
     "github.com/rookie-xy/hubble/module"
     "github.com/rookie-xy/hubble/command"
     "github.com/rookie-xy/hubble/builder"
+    "github.com/rookie-xy/hubble/log/level"
 
-  //_ "github.com/rookie-xy/modules"
+  _ "github.com/rookie-xy/modules"
+    "fmt"
 )
 
 var (
@@ -20,10 +22,6 @@ var (
     help    = command.New("-?",  "help",    "",        "Assist information on how to use the system"  )
     check   = command.New("-cc", "check",   false,     "Pre check before system startup"              )
     home    = command.New("-h",  "home",     paths.Home(),    "Program root path"                           )
-
-    verbose = command.New("-V", "verbose", true,       "output detail info")
-    level   = command.New("-l", "level",   "info",     "output detail info")
-    prefix  = command.New("-p", "prefix",  "[hubble]", "output detail info")
 )
 
 var commands = []command.Item{
@@ -31,49 +29,28 @@ var commands = []command.Item{
     { version,
       command.LINE,
       module.Worker,
-      Name,
-      command.Display,
+      "main",
+      command.Version,
       nil },
 
     { help,
       command.LINE,
       module.Worker,
-      Name,
-      command.List,
+      "main",
+      command.Help,
       nil },
 
     { check,
       command.LINE,
       module.Worker,
-      Name,
+      "main",
       command.SetObject,
       nil },
 
     { home,
       command.LINE,
       module.Worker,
-      Name,
-      command.SetObject,
-      nil },
-
-    { verbose,
-      command.LINE,
-      module.Worker,
-      Name,
-      command.SetObject,
-      nil },
-
-    { level,
-      command.LINE,
-      module.Worker,
-      Name,
-      command.SetObject,
-      nil },
-
-    { prefix,
-      command.LINE,
-      module.Worker,
-      Name,
+      "main",
       command.SetObject,
       nil },
 
@@ -86,13 +63,14 @@ func init() {
 
     argc, argv := len(os.Args), os.Args
     if argc <= 1 {
-        command.Setup(help.GetFlag(), "")
-        exit(-1)
+        command.Line(help.GetFlag(), help.GetFlag())
+        exit(0)
     }
 
     for i := 1; i < argc; i++ {
         if argv[i][0] != '-' {
-            exit(-1)
+            fmt.Println("format is failure")
+            exit(0)
         }
 
         j := i
@@ -101,7 +79,8 @@ func init() {
         }
 
         flag, value := argv[i], argv[j]
-        if err := command.Setup(flag, value); err != nil {
+        if err := command.Line(flag, value); err != nil {
+            fmt.Println(err)
             exit(0)
         }
 
@@ -111,16 +90,14 @@ func init() {
 
 func main() {
     log := log.New()
-    if err := log.Init(prefix.GetValue(), verbose.GetValue(),
-                       level.GetValue()); err != nil {
-        exit(1)
-    }
 
     if value := home.GetValue(); value != nil {
         paths.Init(value)
+    } else {
+        log.Print(level.INFO, "Not found paths")
     }
 
-    core := []string{
+    component:= []string{
         module.Proxys,
         module.Agents,
     }
@@ -134,8 +111,7 @@ func main() {
     if err := builder.Director(module); err != nil {
         exit(-1)
 	}
-
-    builder.Construct(core)
+    builder.Construct(component)
 
     module.Init()
 

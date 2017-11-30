@@ -3,12 +3,13 @@ package command
 import (
     "fmt"
     "github.com/rookie-xy/hubble/types"
+    "errors"
 )
 
-func Display(_ *Item, c *Command, _ types.Object) error {
+func Version(_ *Item, c *Command, _ types.Object) error {
     if c != nil {
         fmt.Println(c.details)
-        return nil
+        return errors.New("version end")
     }
 
     return fmt.Errorf("Display: the command is nil")

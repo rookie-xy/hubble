@@ -6,28 +6,32 @@ import (
     "github.com/rookie-xy/hubble/module"
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/factory"
+    "errors"
 )
 
 type Director struct {
-    log.Log
+   *log.Logger
     build Builder
 }
 
-func New(log log.Log) *Director {
-    return &Director{Log: log}
+func New(l *log.Logger) *Director {
+    return &Director{Logger: l}
 }
 
 func (d *Director) Director(b Builder) error /**Director*/ {
-    //return &Director{build: b}
-    d.build = b
-    return nil
+    if b != nil {
+        d.build = b
+        return nil
+    }
+
+    return errors.New("Director failure")
 }
 
 func (d *Director) Construct(core []string) {
     scope := module.Worker
     key   := scope + "." + module.Configure
 
-    configure := module.Setup(key, d.Log)
+    configure := module.Setup(key, d.Logger)
     if configure == nil {
         fmt.Println("Not found configure module")
         return
@@ -37,7 +41,7 @@ func (d *Director) Construct(core []string) {
     if subject != nil {
         for _, name := range core {
             key := scope + "." + name
-            if module := module.Setup(key, d.Log); module != nil {
+            if module := module.Setup(key, d.Logger); module != nil {
                 d.build.Load(module)
             }
 
@@ -53,3 +57,4 @@ func (d *Director) Construct(core []string) {
 
     d.build.Configure(configure)
 }
+

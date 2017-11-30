@@ -1,11 +1,10 @@
 package log
 
 import (
-    "os"
     "log"
 
-	"github.com/rookie-xy/hubble/types"
   . "github.com/rookie-xy/hubble/log/level"
+	"os"
 )
 
 type Factory func(l Level, f string, args ...interface{})
@@ -14,41 +13,34 @@ type Log interface {
     Output(depth int, s string) error
 }
 
-type logs struct {
+type Logger struct {
    *log.Logger
 
-	Log      Log
-	level    Level
+//	Log    Log
+	level  Level
 }
 
-func New() *logs {
-	prefix := prefix.GetValue()
-	verbose := verbose.GetValue()
-	level := level.GetValue()
-
-	this := &logs{
-		Log: log.New(
+func New() *Logger {
+	this := &Logger{
+		Logger: log.New(
 	        os.Stderr,
-	        prefix.GetString(),
+	        "",
             log.LstdFlags | log.Lmicroseconds,
         ),
         level: INFO,
     }
 
-    var err error
-    this.level, err = Parse(level.GetString(), verbose.GetBool())
-    if err != nil {
-        return nil
-	}
-
     return this
 }
 
-func (l *logs) Init(prefix, verbose, level  types.Value) error {
-	//prefix.GetString()
-	return nil
+func (l *Logger) Set(ll Level) {
+	l.level = ll
 }
 
-func (l *logs) Level() Level {
+func (l *Logger) Get() Level {
     return l.level
+}
+
+func (l *Logger) Print(ll Level, f string, args ...interface{}) {
+    Print(l.Logger, l.level, ll, f, args...)
 }

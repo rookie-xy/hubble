@@ -1,6 +1,4 @@
 package adapter
-/*
-import "github.com/rookie-xy/hubble/log/level"
 
 import (
 	"github.com/rookie-xy/hubble/log"
@@ -9,10 +7,9 @@ import (
 
 type LevelLog interface {
 	log.Log
-	Level() level.Level
+	Get() level.Level
 }
 
 func ToLevelLog(log log.Log) LevelLog {
 	return log.(LevelLog)
 }
-*/

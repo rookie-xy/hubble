@@ -3,9 +3,10 @@ package command
 import (
     "fmt"
     "github.com/rookie-xy/hubble/types"
+    "errors"
 )
 
-func List(_ *Item, _ *Command, _ types.Object) error {
+func Help(_ *Item, _ *Command, _ types.Object) error {
 	if length := len(Pool); length < 0 {
 	    return fmt.Errorf("The pool length is %d \n", length)
     }
@@ -20,5 +21,5 @@ func List(_ *Item, _ *Command, _ types.Object) error {
         }
     }
 
-    return nil
+    return errors.New("help end")
 }
