@@ -40,7 +40,8 @@ func (l *Logger) Get() Level {
 }
 
 func (l *Logger) Copy(logger *Logger) {
-	l = logger
+    l.Logger = logger.Logger
+    l.level = logger.level
 }
 
 func (l *Logger) Print(ll Level, f string, args ...interface{}) {

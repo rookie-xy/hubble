@@ -20,7 +20,7 @@ func New(l *log.Logger) *Director {
 func (d *Director) Director(b Builder) error /**Director*/ {
     if b != nil {
         d.build = b
-        return nil
+       return nil
     }
 
     return errors.New("director failure")
