@@ -71,10 +71,10 @@ proxy:
         pipeline.channel:
             max: 1024
         client.console:
-            buffer: 1024
-            end: "\n"
+            bufsize: 1024
+            end: '\n'
             codec.json:
-                enable: true
+                pretty: true
 
     - sinceDB:
         pipeline.channel:
