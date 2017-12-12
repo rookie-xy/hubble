@@ -20,7 +20,6 @@ var (
     version = command.New("-v", "version",  "0.0.1",   "Display engine version, golang version, " +
                                                                             "system architecture and other information"    )
     help    = command.New("-?",  "help",    "",        "Assist information on how to use the system"  )
-    check   = command.New("-cc", "check",   false,     "Pre check before system startup"              )
     home    = command.New("-h",  "home",     paths.Home(),    "Program root path"                           )
 )
 
@@ -38,13 +37,6 @@ var commands = []command.Item{
       module.Worker,
       "main",
       command.Help,
-      nil },
-
-    { check,
-      command.LINE,
-      module.Worker,
-      "main",
-      command.SetObject,
       nil },
 
     { home,
@@ -119,13 +111,6 @@ func main() {
     }
 
     module.Init()
-
-    if value := check.GetValue(); value != nil {
-        if value.GetBool() {
-            exit(-1)
-        }
-    }
-
     module.Main()
     <-signalChan
     module.Exit(0)

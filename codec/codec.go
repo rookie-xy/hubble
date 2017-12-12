@@ -8,7 +8,7 @@ import (
 type Factory func(log.Log, types.Value) (Codec, error)
 
 type Codec interface {
-    Encode(in types.Object) (types.Object, error)
+    Encode(in types.Object) ([]byte, error)
     Decode(out []byte, atEOF bool) (int, []byte, error)
 }
 

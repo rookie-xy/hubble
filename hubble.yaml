@@ -44,9 +44,12 @@ agents:
         codec.line:
             match: "\n"
             max: 16382
-#        output.kafka:
-#            pipeline.channel:
-#                max: 1024
+        client.console:
+            bufsize: 1024
+            split: "\n"
+            codec.json:
+                pretty: true
+
 
 proxy:
     - forward:
@@ -66,15 +69,6 @@ proxy:
                 - "10.21.21.82:9092"
                 - "10.21.21.83:9092"
                 - "10.21.21.84:9092"
-
-    - forward:
-        pipeline.channel:
-            max: 1024
-        client.console:
-            bufsize: 1024
-            end: '\n'
-            codec.json:
-                pretty: true
 
     - sinceDB:
         pipeline.channel:

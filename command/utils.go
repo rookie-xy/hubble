@@ -35,7 +35,6 @@ func Line(flag, value string) error {
 
 func File(scope, name, key string, value types.Object) error {
     for _, item := range Pool {
-
         if item.Scope != scope || item.Name != name || item.Type != FILE {
             continue
         }
@@ -46,16 +45,18 @@ func File(scope, name, key string, value types.Object) error {
                 prefix = prefix[0:n]
             }
 
-            if item.Command.flag == plugin.Flag {
-                if strings.HasPrefix(key, prefix) {
-                    item.Command.key = key
+            //if prefix, ok := plugin.Prefix(item.Command.key); ok {
+                if item.Command.flag == plugin.Flag {
+                    if strings.HasPrefix(key, prefix) {
+                        item.Command.key = key
+                    } else {
+                        continue
+                    }
+
                 } else {
                     continue
                 }
-
-            } else {
-                continue
-            }
+            //}
         }
 
         return item.Set(&item, item.Command, value)
