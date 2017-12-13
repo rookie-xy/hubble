@@ -2,12 +2,12 @@ package prototype
 
 import "github.com/rookie-xy/hubble/codec"
 
-type CodecPrototype interface {
-	Prototype
-	codec.Codec
+type DecoderPrototype interface {
+    Prototype
+    codec.Decoder
 }
 
-func Codec(this codec.Codec) codec.Codec {
-    prototype := this.(CodecPrototype)
-    return prototype.Clone().(codec.Codec)
+func Decoder(this codec.Decoder) codec.Decoder {
+    prototype := this.(DecoderPrototype)
+    return prototype.Clone().(codec.Decoder)
 }

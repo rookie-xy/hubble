@@ -43,6 +43,34 @@ func Codec(name string, l log.Log, v types.Value) (codec.Codec, error) {
     return factory(l, v)
 }
 
+func Encoder(name string, l log.Log, v types.Value) (codec.Encoder, error) {
+    key := "json"
+    if name != "" {
+        key = name
+    }
+
+    encoder := codec.Encodings[key]
+    if encoder == nil {
+        return nil, fmt.Errorf("'%v' encoder is not available", key)
+    }
+
+    return encoder(l, v)
+}
+
+func Decoder(name string, l log.Log, v types.Value) (codec.Decoder, error) {
+    key := "json"
+    if name != "" {
+        key = name
+    }
+
+    decoder := codec.Decodings[key]
+    if decoder == nil {
+        return nil, fmt.Errorf("'%v' decoder is not available", key)
+    }
+
+    return decoder(l, v)
+}
+
 func Pipeline(name string, l log.Log, v types.Value) (pipeline.Queue, error) {
     key := "channel"
     if name != "" {

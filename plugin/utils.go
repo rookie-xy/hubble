@@ -22,11 +22,17 @@ func Suffix(s string) (string, bool) {
 	return "", false
 }
 
-func Name(s string) (string, bool) {
-	if s != "" {
-		return Flag + "." + s, true
+func Name(name string) (string, bool) {
+	if name != "" {
+		return Flag + "." + name, true
 	}
+	return "", false
+}
 
+func Domain(key, name string) (string, bool) {
+	if key != "" && name != "" {
+		return Flag + "." + key + "." + name, true
+	}
 	return "", false
 }
 

@@ -8,8 +8,8 @@ import (
 type Factory func(log.Log, types.Value) (Codec, error)
 
 type Codec interface {
-    Encode(in types.Object) ([]byte, error)
-    Decode(out []byte, atEOF bool) (int, []byte, error)
+    Encoder
+    Decoder
 }
 
 var Codecs = map[string]Factory{}

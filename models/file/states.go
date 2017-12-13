@@ -2,17 +2,22 @@ package file
 
 import (
 	"sync"
-	"fmt"
     "time"
+
+    "github.com/rookie-xy/hubble/log"
+  . "github.com/rookie-xy/hubble/log/level"
 )
 
 type States struct {
-    States []State `json:"states"`
     sync.RWMutex
+
+    logf    log.Factory
+    States  []State `json:"states"`
 }
 
-func News() *States {
+func News(log log.Factory) *States {
     return &States{
+        logf:   log,
         States: []State{},
     }
 }
@@ -28,7 +33,7 @@ func (s *States) Update(new State) {
         s.States[index] = new
     } else {
         s.States = append(s.States, new)
-        fmt.Printf("New file added for %s\n", new.Source)
+        s.logf(DEBUG, "New file added for %s", new.Source)
     }
 }
 
@@ -63,10 +68,10 @@ func (s *States) Cleanup() int {
 
         if state.TTL == 0 || expired {
             if state.Finished {
-                fmt.Println("models", "State removed for %v because of older: %v", state.Source, state.TTL)
-                continue // drop models
+                s.logf(DEBUG,"State removed for %v because of older: %v", state.Source, state.TTL)
+                continue // drop state
             } else {
-                fmt.Println("State for %s should have been dropped, but couldn't as models is not finished.", state.Source)
+                s.logf(DEBUG,"State for %s should have been dropped, but couldn't as models is not finished.", state.Source)
             }
         }
 
@@ -74,7 +79,6 @@ func (s *States) Cleanup() int {
     }
 
     s.States = states
-
     return statesBefore - len(s.States)
 }
 
@@ -105,8 +109,7 @@ func (s *States) Set(states []State) {
 }
 
 func (s *States) Copy() *States {
-    states := News()
+    states := News(s.logf)
     states.States = s.Get()
-
     return states
 }
