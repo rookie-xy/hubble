@@ -1,10 +1,10 @@
 package main
 
 import (
+    "fmt"
     "os"
     "os/signal"
     "syscall"
-    "fmt"
 
     "github.com/rookie-xy/hubble/log"
     "github.com/rookie-xy/hubble/paths"
@@ -17,10 +17,10 @@ import (
 )
 
 var (
-    version = command.New("-v", "version",  "0.0.1",   "Display engine version, golang version, " +
-                                                                            "system architecture and other information"    )
-    help    = command.New("-?",  "help",    "",        "Assist information on how to use the system"  )
-    home    = command.New("-h",  "home",     paths.Home(),    "Program root path"                           )
+    version = command.New("-v", "version", "0.0.1", "Display engine version, golang version, " +
+                                                                            "system architecture and other information"  )
+    help    = command.New("-?", "help",    "",      "Assist information on how to use the system"  )
+    home    = command.New("-h", "home",     paths.Home(),  "Program home path"                           )
 )
 
 var commands = []command.Item{

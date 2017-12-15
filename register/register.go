@@ -7,7 +7,7 @@ import (
 )
 
 // flyweight
-func Module(scope, name string, items []command.Item, f module.Factory) {
+func Component(scope, name string, items []command.Item, f module.Factory) {
     key := ""
     if scope != key && name != key {
         key = scope + "." + name
