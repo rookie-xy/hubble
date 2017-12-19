@@ -9,6 +9,7 @@ import (
 type Factory func(log.Log, types.Value) (Output, error)
 
 type Output interface {
+    New() (proxy.Forward, error)
     proxy.Forward
 }
 
