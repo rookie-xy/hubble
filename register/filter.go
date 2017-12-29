@@ -1,6 +1,5 @@
 package register
 
-
 import (
     "fmt"
     "github.com/rookie-xy/hubble/filter"
